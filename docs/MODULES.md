@@ -71,7 +71,7 @@ Your First Module
 Let's write a module that processes a new file type we're interested in. This file is defined by the 'JXB' header and we want to parse our fictional file which is defined by the following pseudo-structure.
 
 ```
- struc my_test
+ struct my_test
  {
     char header[3];
     BYTE xorkey;
