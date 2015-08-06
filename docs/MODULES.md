@@ -170,7 +170,7 @@ Next, move over to the fsf-client and ensure the `conf/config.py` file is pointi
          },
          "META_TEST_DECODE": {
              "Message": "our first module",
-             "XOR Key": "0x51"<
+             "XOR Key": "0x51"
          }
      },
      "Interactive": true,
