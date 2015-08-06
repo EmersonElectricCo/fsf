@@ -41,6 +41,14 @@ Check out the [Yara official documentation](http://yara.readthedocs.org/) for mo
 * Since we recursively process objects, a `MIN_DEPTH` configurable value is enforced.
 * There is a `TIMEOUT` value that is imposed on each module run that may not be exceeded or the program terminates.
 
+###Is there a general process flow that can help me understand what's going on?###
+
+Yes. For a complete process flow, refer to the graphic found at [docs/FSF Process.png](https://github.com/EmersonElectricCo/fsf/blob/master/docs/FSF%20Process.png). You may also find a graphic depicting a high level overview helpful as well at [docs/FSF Overview.png] (https://github.com/EmersonElectricCo/fsf/blob/master/docs/FSF%20Overview.png)
+
+###Is there helpful documentation on how to write modules?###
+
+Absolutely. Check out the [docs/modules.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/MODULES.md) for a great primer on how to get started.
+
 Requrements
 ------------
 
