@@ -161,7 +161,7 @@ Next, move over to the fsf-client and ensure the `conf/config.py` file is pointi
              "SHA512": "d51021afd7de53fd3546d1cd9a5aba1bacdafa1a94377ab2d10b90943a6bf708a821a20decd08311c19d5dc3a3b701a972bd5db1e1881b16b6ea1d046fdce5bb",
              "Size": "20 bytes"
          },
-         <b>"SCAN_YARA": {
+         "SCAN_YARA": {
              "my_test": {
                  "desc": "[description of signature]",
                  "lastmod": "20150729",
@@ -170,7 +170,7 @@ Next, move over to the fsf-client and ensure the `conf/config.py` file is pointi
          },
          "META_TEST_DECODE": {
              "Message": "our first module",
-             "XOR Key": "0x51"</b>
+             "XOR Key": "0x51"<
          }
      },
      "Interactive": true,
