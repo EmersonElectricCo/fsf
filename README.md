@@ -64,10 +64,10 @@ Setup
 -----
 
 Check your configuration settings
-* __Server side__ - In [https://github.com/EmersonElectricCo/fsf/blob/master/fsf-server/conf/config.py](fsf-server/conf/conf.py) 
- * Make sure you are pointing to your master yara signature file using the full path. See [https://github.com/EmersonElectricCo/fsf/blob/master/fsf-server/yara/rules.yara](fsf-server/yara/rules.yara)
+* __Server side__ - In [fsf-server/conf/conf.py] (https://github.com/EmersonElectricCo/fsf/blob/master/fsf-server/conf/config.py) 
+ * Make sure you are pointing to your master yara signature file using the full path. See [fsf-server/yara/rules.yara] (https://github.com/EmersonElectricCo/fsf/blob/master/fsf-server/yara/rules.yara)
  * Set the logging directory; make sure it exists and ensure you have permissions to write to it
- * In [https://github.com/EmersonElectricCo/fsf/tree/master/fsf-server](fsf-server), start up the server using `./main.py start` and it will daemonize 
-* __On client__ - In [https://github.com/EmersonElectricCo/fsf/blob/master/fsf-client/conf/config.py](fsf-client/conf/conf.py)
+ * In [fsf-server](https://github.com/EmersonElectricCo/fsf/tree/master/fsf-server), start up the server using `./main.py start` and it will daemonize 
+* __On client__ - In [fsf-client/conf/conf.py](https://github.com/EmersonElectricCo/fsf/blob/master/fsf-client/conf/config.py)
  * Point to your server being used to scan files
  * Invoke `fsf-client.py` by giving it a file as an argument
