@@ -16,9 +16,9 @@ Some examples might be:
 * Uncompressing ZIP files and scanning their contents.
 * Decoding a malware config file that matches a specific signature, then parsing the meta data.
 * General metadata enrichment for any file type.
-* Logging the compile time for any EXE
-* Logging the author field for office documents
-* So much more...
+ * Logging the compile time for any EXE
+ * Logging the author field for office documents
+ * So much more...
 
 You can extend and define what’s important by writing modules that expose pieces of metadata that inform analysis and expose new sub objects of a file! These sub objects are recursively scanned through the same gauntlet, further enhancing both Yara and module utility.
 
