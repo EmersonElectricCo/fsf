@@ -185,7 +185,7 @@ All modules are passed both a scanner object and a buffer in the form of a list 
 
 Once you've achieved success getting the desired output in the form of a returned dictionary, you can plug the module in to the framework by following the above instructions, and attempt to run the `fsf-client.py` script against the configured server. Your returned output should be a JSON object including your modules returned data.
 
-Areas to troubleshoot for difficulties running at this level on the server side are the `dbg.log` file and the `daemon.log` file. On the client side, if the not-interactive flag is set, difficulties are logged to the client. All are written to the configured log path. 
+Areas to troubleshoot for difficulties running at this level on the server side are the `dbg.log` file and the `daemon.log` file.
 
 Automated File Extraction
 ------------
