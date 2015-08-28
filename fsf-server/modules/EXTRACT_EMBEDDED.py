@@ -58,9 +58,9 @@ def EXTRACT_EMBEDDED(s, buff):
             # when the module is run again on the 'buffer' returned key value
             if start >= last_end:
                EXTRACT_FILES['object_%s' % counter] = OrderedDict([('Start', '%s bytes' % start),
-                                                                      ('End', '%s bytes' % end),
+                                                                   ('End', '%s bytes' % end),
                                                                    ('Description', parser.description),
-                                                                      ('Buffer',  buff[start:end])])
+                                                                   ('Buffer',  buff[start:end])])
                counter += 1
                last_start = start
                last_end = end

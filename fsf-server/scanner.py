@@ -52,7 +52,7 @@ class Scanner:
          try:
             os.makedirs(self.log_path)
          except:
-            print 'Unable to create logging directory: %s. Check permissions.' \
+            print 'Unable to create logging directory: %s. Check permissions?' \
             % self.log_path
             sys.exit(2)
 

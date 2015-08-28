@@ -161,7 +161,7 @@ def META_PE(s, buff):
    pe = pefile.PE(data=buff)
 
    META_PE = { 'File Type' : get_image_hdr_characteristics(pe),
-                'CRC' : get_crc(pe),
+               'CRC' : get_crc(pe),
                'Compiled' : '%s UTC' % time.asctime(time.gmtime(pe.FILE_HEADER.TimeDateStamp)),
                'Architecture' : get_machine(pe),
                'Characteristics' : get_dllcharacteristics(pe),

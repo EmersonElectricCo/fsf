@@ -1,1 +1,10 @@
-__all__ = ['META_BASIC_INFO', 'SCAN_YARA', 'EXTRACT_ZIP', 'META_PE', 'EXTRACT_EMBEDDED', 'EXTRACT_RAR']
+__all__ = ['META_BASIC_INFO', 
+           'SCAN_YARA', 
+           'EXTRACT_ZIP', 
+           'META_PE', 
+           'EXTRACT_EMBEDDED', 
+           'EXTRACT_RAR',
+           'META_PDF',
+           'META_OOXML',
+           'EXTRACT_SWF',
+           'META_OLECF',]

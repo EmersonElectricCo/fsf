@@ -17,4 +17,8 @@ default = ['META_BASIC_INFO',
 triggers = [('ft_zip', ['EXTRACT_ZIP'], False),
             ('ft_exe', ['META_PE'], False),
             ('ft_rar', ['EXTRACT_RAR'], False),
+            ('ft_ole_cf', ['META_OLECF'], False),
+            ('ft_pdf', ['META_PDF'], False),
+            ('misc_ooxml_core_properties', ['META_OOXML'], False),
+            ('ft_swf', ['EXTRACT_SWF'], False),
            ]

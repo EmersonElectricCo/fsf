@@ -1,5 +1,4 @@
-# fsf
-File Scanning Framework
+File Scanning Framework (FSF)
 ==============
 
 Introduction
@@ -24,9 +23,7 @@ You can extend and define what’s important by writing modules that expose piec
 
 ###If we alert on a signature, how will we know?###
 
-This decision is left up to you since there are many ways to do this.
-* Write a module to email your team if the alert flag is set
-* Aggregate and index the scan.log data to a utility like Splunk and define a rule within that
+This decision is left up to you since there are many ways to do this. One suggestion might be to aggregate and index the scan.log data using something like [Splunk](http://www.splunk.com/) or with an [ELK Stack](http://brewhouse.io/blog/2014/11/04/big-data-with-elk-stack.html). You can then build your alerting into the capability.
 
 ###Is there a way I can take action on a specific rule hit from within the FSF? Like print out metadata for certain file types?###
 
@@ -66,7 +63,7 @@ Below are steps to setup on CentOS and should be adaptable to other distribution
 		
 * Install module dependencies
  * `easy_install -U setuptools`
- * `pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma`
+ * `pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools`
 
 Setup
 -----

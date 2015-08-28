@@ -6,10 +6,10 @@
 
 import socket
 
-SCANNER_CONFIG = { 'LOG_PATH' : '/tmp/scanner',
-                   'YARA_PATH' : '/FULL/PATH/TO/fsf/fsf-server/yara/rules.yara',
+SCANNER_CONFIG = { 'LOG_PATH' : '/tmp',
+                   'YARA_PATH' : '/FULL/PATH/TO/fsf-server/yara/rules.yara',
                    'EXPORT_PATH' : '/tmp',
-                   'TIMEOUT' : 15,
+                   'TIMEOUT' : 60,
                    'MAX_DEPTH' : 10 }
 
 SERVER_CONFIG = { 'IP_ADDRESS' : socket.gethostname(),
