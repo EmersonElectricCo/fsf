@@ -102,7 +102,8 @@ def get_sections(pe):
 
    sections = []
    for section in pe.sections:
-      sections.append(section.Name)
+      name = section.Name.strip('\0')
+      sections.append(name.decode('ascii', 'ignore'))
    return sections
 
 def get_dllcharacteristics(pe):
