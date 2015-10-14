@@ -46,6 +46,18 @@ Yes. For a complete process flow, refer to the graphic found at [docs/FSF Proces
 
 Absolutely. Check out the [docs/modules.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/MODULES.md) for a great primer on how to get started.
 
+###How does this scale up if I want to 'scan all the things'?###
+
+The server is parallelized and supports running multiple jobs at the same time. As an example, I've provided one possible way you can accomplish this by integrating with Bro, extracting files, and sending them over to the FSF server. You can find this at the bottom of [docs/modules.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/MODULES.md) under the heading 'Automated File Extraction'.
+
+Some key advantages to Bro integration are:
+
+* Ability to direct files to a given FSF scanner node on a per sensor basis
+* Use of the Bro scripting language to help optimize inputs, some examples might include:
+ * Limit sending of a file we've already seen for a certain time interval to avoid redundancy (based on MD5, etc)
+ * Limit the size of the file you extracting if desired
+ * Control over MIME types you care to pass on to FSF
+
 Requirements
 ------------
 
