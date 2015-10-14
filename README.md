@@ -46,7 +46,7 @@ Yes. For a complete process flow, refer to the graphic found at [docs/FSF Proces
 
 Absolutely. Check out the [docs/modules.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/MODULES.md) for a great primer on how to get started.
 
-Requrements
+Requirements
 ------------
 
 FSF has been tested to work successfully on CentOS and Ubuntu distributions.
@@ -75,4 +75,4 @@ Check your configuration settings
  * In [fsf-server](https://github.com/EmersonElectricCo/fsf/tree/master/fsf-server), start up the server using `./main.py start` and it will daemonize 
 * __Client-side__ - In [fsf-client/conf/conf.py](https://github.com/EmersonElectricCo/fsf/blob/master/fsf-client/conf/config.py)
  * Point to your server being used to scan files
- * Invoke `fsf-client.py` by giving it a file as an argument
+ * Submit a file with `fsf-client.py <PATH>`, you can use wildcard for scanning all of the files in a directory
