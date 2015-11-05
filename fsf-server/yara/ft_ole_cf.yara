@@ -12,4 +12,3 @@ rule ft_ole_cf
    condition:
       $magic at 0
 }
-

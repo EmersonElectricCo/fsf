@@ -58,6 +58,24 @@ Some key advantages to Bro integration are:
  * Limit the size of the file you extracting if desired
  * Control over MIME types you care to pass on to FSF
 
+###How can you get access to the subobjects that are recursively processed?###
+
+Ah, so are you tired of using `hachoir-subfile` + `dd` to carve out files during static analysis? Or perhaps running `unzip` or `unrar` to get decompressed files, `upx -d` to get unpacked files, or `OfficeMalScan` to get macros over and over is getting old? 
+
+Well you can certainly use FSF to do the heavy lifting if you'd like. It incorporates the components that make the above tools so helpful into the frameowk. For other use cases, all you you need is to ensure the intelligence to do what you want is built into the framework (Yara + Module)! Several open source modules included with the package help with this. Just use the --full option when invoking the client and all the subobjects will collect in a new directory.
+
+Word of caution however, make sure you understand how to do it the hard way first!
+
+```
+emr-fsf-client macro_test --full
+...normal report information...
+Subobjects of macro_test successfully written to: fsf_dump_1446676465_6ba593d8d5defd6fbaa96a1ef2bc601d
+```
+
+###Okay I think I understand, but I'd like visual representation on what does a 'report' look like?###
+
+Take a look a the following graphic in [docs/Example Test.png](https://github.com/EmersonElectricCo/fsf/blob/master/docs/Example%20Test.png). That represents the file `test.zip` which may be found in [docs/Test.zip](https://github.com/EmersonElectricCo/fsf/blob/master/docs/Test.zip). That file, when recursively processed using FSF outputs what's found in [docs/Test.json](https://github.com/EmersonElectricCo/fsf/blob/master/docs/Test.json).
+
 Requirements
 ------------
 
@@ -71,7 +89,7 @@ Below are steps to setup on CentOS and should be adaptable to other distribution
  * yum install epel-release
 * Install following rpm packages (yum install)
  * python-argparse python-devel python-pip ssdeep-devel libffi-devel
-* Install unrar from RPM repo such as DAG
+* Install unrar and UPX from and RPM repo such as RPMForge
 		
 * Install module dependencies
  * `easy_install -U setuptools`
@@ -86,5 +104,5 @@ Check your configuration settings
  * Set the logging directory; make sure it exists and ensure you have permissions to write to it
  * In [fsf-server](https://github.com/EmersonElectricCo/fsf/tree/master/fsf-server), start up the server using `./main.py start` and it will daemonize 
 * __Client-side__ - In [fsf-client/conf/conf.py](https://github.com/EmersonElectricCo/fsf/blob/master/fsf-client/conf/config.py)
- * Point to your server being used to scan files
+ * Point to your server(s) being used to scan files
  * Submit a file with `fsf-client.py <PATH>`, you can use wildcard for scanning all of the files in a directory

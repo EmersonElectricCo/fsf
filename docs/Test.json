@@ -1,0 +1,527 @@
+{
+    "Scan Time": "2015-11-04 22:53:14.236713", 
+    "Filename": "test.zip", 
+    "Object": {
+        "META_BASIC_INFO": {
+            "SHA1": "872f221d3a893afb3895f3eae82b7877ba38b655", 
+            "MD5": "f77489b604a106a0e0cd715d84a975a4", 
+            "ssdeep": "6144:Cl5QCGRIcQ5lunKBVOEfvWRmG7t1u9VhcLjs0ZAIdB084E5fnKESn4zbhxJfmeH1:CvQ1uf5l4KBIEfvW3wT6jjafLWK1nibV", 
+            "SHA256": "1e97ee119b350f12ffb366aebab625a46c24d44f22416f289412e5de5053794d", 
+            "SHA512": "cd10a807da10ed796f1b9a8fa10e378efec9b12e16acbb0a983c3e2579f622dc6e96f65e69e19e056934ab1999777492638bb75dd04ed2b35a1e9944418af3a3", 
+            "Size": "351521 bytes"
+        }, 
+        "SCAN_YARA": {
+            "misc_compressed_exe": "No Meta Provided", 
+            "ft_zip": {
+                "company": "Emerson", 
+                "lastmod": "20141217", 
+                "desc": "File type signature for basic ZIP files.", 
+                "author": "Jason Batchelor"
+            }, 
+            "compressed_exe_in_zip": {
+                "company": "Emerson", 
+                "lastmod": "20150813", 
+                "desc": "Detect on evidence of a compressed executable within a ZIP", 
+                "author": "Jason Batchelor"
+            }
+        }, 
+        "EXTRACT_ZIP": {
+            "Object_0": {
+                "Filename": "mypdf.pdf", 
+                "Last modified": "2015-06-29 13:52:08", 
+                "Comment": "", 
+                "CRC": "0x54692274", 
+                "Compressed Size": "77308 bytes", 
+                "Uncompressed Size": "81093 bytes", 
+                "Compress Type": "Standard compression algorithm", 
+                "Create System": "MS-DOS", 
+                "Password Required": false, 
+                "META_BASIC_INFO": {
+                    "SHA1": "47c81e816f50f79d89bc818f55b2dd985f308c03", 
+                    "MD5": "383674d1e909e67f9a8b517313e6ca32", 
+                    "ssdeep": "1536:qlsANlcWzbEh7lLnyehz9Ke4PurbhWJ5O7SBlJVS2Nmmb0JUB:qlsAjUBNZHrbvaPSsmmb0JUB", 
+                    "SHA256": "61e78a47d98119089859d9504e26bc657ed0df37b7fe6883a46b4cdda4d15619", 
+                    "SHA512": "c52aa15129c302ef4d59c77d8a0aef32eb59354189ea90f701e318335c7df97c340911eb801a5d45da6a2d664ac9d2890b054e15fb7769e1a9d6dbb27e6fcfaa", 
+                    "Size": "81093 bytes"
+                }, 
+                "SCAN_YARA": {
+                    "ft_pdf": {
+                        "company": "Emerson", 
+                        "lastmod": "20141230", 
+                        "desc": "Signature to trigger on PDF file magic.", 
+                        "author": "Jason Batchelor"
+                    }
+                }, 
+                "META_PDF": {
+                    "/Creator": "Microsoft\u00ae Word 2010", 
+                    "/Author": "Batchelor, Jason", 
+                    "/Producer": "Microsoft\u00ae Word 2010", 
+                    "/CreationDate": "D:20150629135207-05'00'", 
+                    "/ModDate": "D:20150629135207-05'00'"
+                }
+            }, 
+            "Object_1": {
+                "Filename": "Test.docx", 
+                "Last modified": "2015-06-29 13:48:28", 
+                "Comment": "", 
+                "CRC": "0x775f3379", 
+                "Compressed Size": "9686 bytes", 
+                "Uncompressed Size": "12539 bytes", 
+                "Compress Type": "Standard compression algorithm", 
+                "Create System": "MS-DOS", 
+                "Password Required": false, 
+                "META_BASIC_INFO": {
+                    "SHA1": "29f3520ab26ed392ced40c3c87a395d29d4eeab0", 
+                    "MD5": "a940d3f598ef37f9d5638934dcd65068", 
+                    "ssdeep": "192:TDtmpXYy3b9lx5bk8xgNAOC8g9FG6Gk72oBjLXZsReYRUJkFACqh/SP:TDCXYy3b9k5E9FG6F7//oMMACISP", 
+                    "SHA256": "85d581eff8590484ce47e7fa9ca46737ffe20df89d173a6100a854c3147b8eba", 
+                    "SHA512": "1a3e53721f99ede026acc3795a2a6acb9e22766d3e9e9d677b649db217451a568dd2d07240d8b18b86519f532851e5b551c3b73453b40b5af34634f4f76c4d8b", 
+                    "Size": "12539 bytes"
+                }, 
+                "SCAN_YARA": {
+                    "ft_office_open_xml": {
+                        "company": "Emerson", 
+                        "lastmod": "20140915", 
+                        "desc": "Simple metadata attribute indicative of Office Open XML format. Commonly seen in modern office files.", 
+                        "author": "Jason Batchelor"
+                    }, 
+                    "ft_zip": {
+                        "company": "Emerson", 
+                        "lastmod": "20141217", 
+                        "desc": "File type signature for basic ZIP files.", 
+                        "author": "Jason Batchelor"
+                    }
+                }, 
+                "EXTRACT_ZIP": {
+                    "Object_11": {
+                        "Filename": "docProps/app.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x9d3e250c", 
+                        "Compressed Size": "368 bytes", 
+                        "Uncompressed Size": "709 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "2f363661976fc7d39618dfdcb13bb1653568855d", 
+                            "MD5": "d77abb430e7205254c4cc6ddfdc932eb", 
+                            "ssdeep": "12:TMHdtz6fl4xflKJm7w0v6mi9MHs33+KPGL2X3ZoGFN1pv6lAg4AIiMPyyGTMFTf:2dtz6fl4xflKJmJv6miqDKPG4o6Rej4T", 
+                            "SHA256": "00bd44101168e89fcc1a8be12e5b4db575c2136a07cdc63972d66f8edebc9ce2", 
+                            "SHA512": "f6ae86aa0ae0de223946f71cd79757ca192e7ac66f98b436005b53b29719451faacc1899d072b050d116edde525a99b2bc3ac6fe1eaf4656df352c55b4f2bf70", 
+                            "Size": "709 bytes"
+                        }
+                    }, 
+                    "Object_10": {
+                        "Filename": "word/fontTable.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x4a41e916", 
+                        "Compressed Size": "451 bytes", 
+                        "Uncompressed Size": "1186 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "7fbae91894ff6161a77a9cf277abe293e14b1ca2", 
+                            "MD5": "00c1a7c976e2d86669d49711cc749c35", 
+                            "ssdeep": "24:2dtO7f9mflYmfrf++hrZgRgeDATqloYZvUb8gf13EqjYG/hIgctO13EqloYW8:c071mNYmS+hrZJiReQcwANjbIBINe6", 
+                            "SHA256": "98508a585179862315a808a605478e42887c5f3ad740d5f399f7fc786914deed", 
+                            "SHA512": "323b12146f1582e4ab4727b335dc7633532d45a9fc5150cd149c6e613637aacf4bcaf739e3419b8128ab7bdec1c0b3e360e4ec323d22129968611136f3275e3a", 
+                            "Size": "1186 bytes"
+                        }
+                    }, 
+                    "Object_0": {
+                        "Filename": "[Content_Types].xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x82872409", 
+                        "Compressed Size": "385 bytes", 
+                        "Uncompressed Size": "1422 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "d09f0079b1cd462311fd614f56e64df5f7021cf7", 
+                            "MD5": "d2b4750584c8997e64e60a32220ab45c", 
+                            "ssdeep": "24:2dtp6f3QI1yq2yyQIKD9EG2yhQIKD9EU2yNo2yctQIKD9Ef2y6QIKD9El2yW1QIh:ciII8q2KIsp2ZIs52X2niIsy2kIsS2w4", 
+                            "SHA256": "688dca40507fb96630f3df80442266a0354e7c24b7df86be3ea57069b25d12c6", 
+                            "SHA512": "5414cde8e13e4ec394f72d8fb712cd6411d2e36c7138cddf72335f7d3bfdf3a0222e3564fdd96db656b6e99472db7fb1ea4e4e3ff8332682cd8abea8e0dcac4a", 
+                            "Size": "1422 bytes"
+                        }
+                    }, 
+                    "Object_1": {
+                        "Filename": "_rels/.rels", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0xb71a911e", 
+                        "Compressed Size": "243 bytes", 
+                        "Uncompressed Size": "590 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "9d7abf0ee4effcecad80c8bbfb276079a05b4342", 
+                            "MD5": "77bf61733a633ea617a4db76ef769a4d", 
+                            "ssdeep": "12:TMHdtWa6fmEUdzXb6flbEOBSmzXa6fmEaSVgzXV6flbEjOOJ:2dtWa6ffa7b6flYOQm7a6ffZVg7V6flu", 
+                            "SHA256": "e19238d7a71fa7a2490776252686f70e2de6238c87cd509b5e3a3cc07c2ea4df", 
+                            "SHA512": "4f1d48a8273436dbb710bb5f26bdbb701e6c6346511d6ac2e4c7f92db705fa1332e0a4ef9063dc0886e2e5b8b01ec209f8f99890957fee635177c41b09bbe769", 
+                            "Size": "590 bytes"
+                        }
+                    }, 
+                    "Object_2": {
+                        "Filename": "word/_rels/document.xml.rels", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x39973b7c", 
+                        "Compressed Size": "290 bytes", 
+                        "Uncompressed Size": "953 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "5d7ce34aa09f8c72a32469e613c3397f8377d361", 
+                            "MD5": "eaf7ba11a428830d5013f067e2224313", 
+                            "ssdeep": "24:2dtWa6ffa7b6flYR7a4+Bh7V6flYIO7u6flYq7o26flY6J67Q6flYKJ:c01naX6NYRG7Bhh6NYVS6NYqN6NY6Uki", 
+                            "SHA256": "31f4f4ee74f68d76f77375e997b1974e20ac41c8cd527fcbc9551a548a330939", 
+                            "SHA512": "f519adc43ff1c03201afb0438822dc14c3afeebe8417d142ef25db7bd09550123385283aa75836e47456588d0a11071bd73aec4ecd26f39e5708c7acc926bf3c", 
+                            "Size": "953 bytes"
+                        }
+                    }, 
+                    "Object_3": {
+                        "Filename": "word/document.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x17aa1c7e", 
+                        "Compressed Size": "573 bytes", 
+                        "Uncompressed Size": "1548 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "fda510d6da23d0726372864c7a5d6b2f06f679fe", 
+                            "MD5": "5a1d6ed700027c58cc569edee21d82f2", 
+                            "ssdeep": "48:cAv+Bc6mNYYNEbz+qliS+Q+H+Uv+L+paa5U3K:vsc6mmY+bzZliSfiZogq6", 
+                            "SHA256": "7caab76271c4aa93e6e395f3ec3cbdb5eea8b32f45ec600933c3da7f0df4d573", 
+                            "SHA512": "eb7f563b9d08252da08c635455454adc90b949b8217c3639348c4adf072d9a87e5b8cb1292b43de9d4346a1bac5a4ec42e66540b3a083751f36e2f9b92455b7f", 
+                            "Size": "1548 bytes"
+                        }
+                    }, 
+                    "Object_4": {
+                        "Filename": "word/theme/theme1.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x2943dd30", 
+                        "Compressed Size": "1704 bytes", 
+                        "Uncompressed Size": "7076 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "03b98c08cfdb22af09d3c22cc78588d5d371db97", 
+                            "MD5": "20e1680d6d9ec94fd162d075012f077d", 
+                            "ssdeep": "96:xLM8pu68FNk/VmWHS95EUmMFNk/VmWHS95EyDatpvm9jOLsEO+hOyYvbcZXyMm:xLM8po/U/1xyMm", 
+                            "SHA256": "488a401645c6030b741d7e912aa55ad9ec6b219d36a3247332454c0de867b827", 
+                            "SHA512": "dec8cf1911fa1419d6dad397209e002afd492f99b91cce288758f163e47aae02da02cd8a8e60def18c615aa32ea4bbbb02e99fba6d0deba8cea6581dc1f01b68", 
+                            "Size": "7076 bytes"
+                        }
+                    }, 
+                    "Object_5": {
+                        "Filename": "word/settings.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0xadb1ca9c", 
+                        "Compressed Size": "884 bytes", 
+                        "Uncompressed Size": "2199 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "e9359972e0e5623c7c204032054f58c079c18aae", 
+                            "MD5": "865c65e0f922491a3467f1654be406a3", 
+                            "ssdeep": "48:ciec6mNYYNEbliS+Q914oM+YqM+IyM+wM+qAayVKTgYTjv3:+c6mmY+bliStH4N9xbunTgar", 
+                            "SHA256": "a1d3dd38082b61776c7da87854eb7f5ddeb6de9589e90a9bcfb31b56c2450454", 
+                            "SHA512": "cbb50e90332e54daca78d7010e43caab455660e9c9ec21d8c81622d41ca53840a4fafcf95bb6ed0838d4c3b60c75aa9d1adba174c0187851379af211b392a80d", 
+                            "Size": "2199 bytes"
+                        }
+                    }, 
+                    "Object_6": {
+                        "Filename": "word/webSettings.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x4e16a017", 
+                        "Compressed Size": "258 bytes", 
+                        "Uncompressed Size": "428 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "cdcd7fab65a876c957d2901dbb1e1942647d3cc5", 
+                            "MD5": "cee6069bd7a22315bb5b328a3ad3b498", 
+                            "ssdeep": "12:TMHdtiY0EfWKvAsmflbEmf6Ks8+DYQuM0My4zGrYb:2dti4f9mflYmfrf++hCzS2", 
+                            "SHA256": "2de8631b2a69ae54c962af917bb57a9ae06949e606da5088f256b866df8cdaba", 
+                            "SHA512": "f16b27e85b66441f099df52a637533b1bfdc663c6c2283da616e97a2f72b51f771c71a9f0d3d5bb22102539950c409cdbd07a63ae985ac60f07a6bb9116843d8", 
+                            "Size": "428 bytes"
+                        }
+                    }, 
+                    "Object_7": {
+                        "Filename": "word/stylesWithEffects.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x28d89db0", 
+                        "Compressed Size": "1979 bytes", 
+                        "Uncompressed Size": "15710 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "5c7cde0803adc5d695d8c0088efcd5b8f7fec75f", 
+                            "MD5": "c48d8469816165905c276ce8cbca908f", 
+                            "ssdeep": "96:8sc6mmY+bzZliSfiZo3cFiDF7pC33+41lcWb7yPWsi0L:/xmmY+ZsHyhpCH3Pnnd0L", 
+                            "SHA256": "00c5cda7671bf545a8c97312f14b2b8bc0ee7fa469b36c25ee158c8a5c1c1568", 
+                            "SHA512": "9ff40932e9fdc059c829518ab22980c7cd3f222af97a1df73eef58c8c5f8a6be1881fc7f85a07147510086fc16c5abd107c28b527ddc1ee8b081ae9577283805", 
+                            "Size": "15710 bytes"
+                        }
+                    }, 
+                    "Object_8": {
+                        "Filename": "docProps/core.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0xeaea6e7c", 
+                        "Compressed Size": "337 bytes", 
+                        "Uncompressed Size": "654 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "7f430bbe5bb06904d107fc827c67235dd75cd427", 
+                            "MD5": "1c595462df2305947303974a0ecd7929", 
+                            "ssdeep": "12:TMHdt2rmf1knYgRN8i9U7q2A90Un/jFjr:2dtpf1knYgz8x7q20BbJr", 
+                            "SHA256": "eeca19db57b747062cfcd2dc7cf87d008e7488179e08b21278bb290422667aeb", 
+                            "SHA512": "1763380283431841d0ffb6658479f540427b17ed71f27ac83539f8e7fefd46e54b1bb73479321c4f3bd92931acee9a3e908868b20dd635015b21f4b2620dbf3a", 
+                            "Size": "654 bytes"
+                        }, 
+                        "SCAN_YARA": {
+                            "misc_ooxml_core_properties": {
+                                "company": "Emerson", 
+                                "lastmod": "20150505", 
+                                "desc": "Identify meta xml content within OOXML documents", 
+                                "author": "Jason Batchelor"
+                            }
+                        }, 
+                        "META_OOXML": {
+                            "cp:coreProperties": {
+                                "creator": "Batchelor, Jason", 
+                                "lastModifiedBy": "Batchelor, Jason", 
+                                "revision": "1", 
+                                "created": "2015-06-29T18:48:00Z", 
+                                "modified": "2015-06-29T18:48:00Z"
+                            }
+                        }
+                    }, 
+                    "Object_9": {
+                        "Filename": "word/styles.xml", 
+                        "Last modified": "1980-01-01 00:00:00", 
+                        "Comment": "", 
+                        "CRC": "0x858d234e", 
+                        "Compressed Size": "1851 bytes", 
+                        "Uncompressed Size": "14957 bytes", 
+                        "Compress Type": "Standard compression algorithm", 
+                        "Create System": "MS-DOS", 
+                        "Password Required": false, 
+                        "META_BASIC_INFO": {
+                            "SHA1": "8c279b102ce7942bb6b89427d5e7ccf7efb6bb79", 
+                            "MD5": "e385545d1af6366db424985084f7d142", 
+                            "ssdeep": "96:v1mmmSGzcFiDF7pC33+41lcWb7yPWsi0L:v1mmmlgyhpCH3Pnnd0L", 
+                            "SHA256": "8ec7ca3b62dd913c49f4cdd744c757c4ca926cb6d8de5e955734f0cd9ce1a990", 
+                            "SHA512": "9ea092eb6e1a607d7d00e72f503bcada6d9620ba099e37d3d5de4d46f65f27a6d432b4d8b9ca1419d41261b82f59f7e5cc296ab2b78a5addb76b8247fc45d839", 
+                            "Size": "14957 bytes"
+                        }
+                    }
+                }
+            }, 
+            "Object_2": {
+                "Filename": "sfx-binary.exe", 
+                "Last modified": "2015-07-27 15:45:08", 
+                "Comment": "", 
+                "CRC": "0xc761eb70", 
+                "Compressed Size": "264105 bytes", 
+                "Uncompressed Size": "353555 bytes", 
+                "Compress Type": "Standard compression algorithm", 
+                "Create System": "MS-DOS", 
+                "Password Required": false, 
+                "META_BASIC_INFO": {
+                    "SHA1": "9f8d43bb37dee1b866fa6626fca8e6788d115b56", 
+                    "MD5": "f2270f545ace4e44c3bbe5b2a2c02f06", 
+                    "ssdeep": "6144:ga4InuJg58BkgqPoDH49n8cbFcQ/Dcyzq/KESn4fbTxJfmex/NEs:gat0EAH49n8ctDVUK1nYbTuexN", 
+                    "SHA256": "a9976a1794d2c42c3101658c336de7d050c1a9db3c3757347074c1885ecb6905", 
+                    "SHA512": "b6d8f9e6e0aa9f8c709d3c1e0c0f6db61c4e078e3c4ded02eabbe09c160f9bf11e7988312c6392301a135e69bd5eafbf093f63e7b089d9e6db56988c88cff97c", 
+                    "Size": "353555 bytes"
+                }, 
+                "EXTRACT_EMBEDDED": {
+                    "Object_0": {
+                        "Start": "196608 bytes", 
+                        "End": "353555 bytes", 
+                        "Description": "Roshal archive (RAR)", 
+                        "META_BASIC_INFO": {
+                            "SHA1": "e4d158f41d1de94c2348c742596a6e1d68653c20", 
+                            "MD5": "2ceca39e38c139530e083ae243c57b70", 
+                            "ssdeep": "3072:+8RcyzZ9avCeKESnXEpcWKW27U9WJE0SfmexTkSNEs:zcyzq/KESn4fbTxJfmex/NEs", 
+                            "SHA256": "a39f5d617ed701782bce1da2f1f87d3b4c8bd92a46ab895c121019568f64982b", 
+                            "SHA512": "315017b724ca8cda10aafa10e1f5002d4a399551de4436a0940044272ce41906ccf77cd96921ecc78710c7c18fea53a5552e3b5ff44adf7c25105bec0c48e870", 
+                            "Size": "156947 bytes"
+                        }, 
+                        "SCAN_YARA": {
+                            "misc_compressed_exe": "No Meta Provided", 
+                            "ft_rar": {
+                                "company": "Emerson", 
+                                "lastmod": "20150107", 
+                                "desc": "File type signature for basic .rar files", 
+                                "author": "James Ferrer"
+                            }, 
+                            "compressed_exe_in_rar": {
+                                "company": "Emerson", 
+                                "lastmod": "20150813", 
+                                "desc": "Detect on evidence of a compressed executable within a RAR", 
+                                "author": "Jason Batchelor"
+                            }
+                        }, 
+                        "EXTRACT_RAR": {
+                            "Object_0": {
+                                "Filename": "psftp.exe", 
+                                "Last Modified": "2013-12-02 13:52:14", 
+                                "Comment": null, 
+                                "CRC": "0x86ab78cd", 
+                                "Compressed Size": "156671 bytes", 
+                                "Uncompressed Size": "335872 bytes", 
+                                "Compress Type": "Normal Compression", 
+                                "Create System": "Windows", 
+                                "Password Required": false, 
+                                "META_BASIC_INFO": {
+                                    "SHA1": "6f2b19cf001ff2793c72d3bc0ed612745396c994", 
+                                    "MD5": "e6eb192e7663e6a2366e013763fc35f3", 
+                                    "ssdeep": "6144:MLUK2P/O8BGmfzQTN7X5A3k0GN54flaGgtXWPq1FFarw9lW+ARqzMy/nZr3:MLUj28Bhfz0N8HG2gQPq1FFjzPZr", 
+                                    "SHA256": "ad8954f0a6fe74e1283f414a2636cdc7c2d6527234c70bd5ae2c0a3871044355", 
+                                    "SHA512": "dd9f75a6c3e28304bcacc3e7a0e7802ebc6ac66f78727321d1b8878cbcd9b8462210ce3406f98ecc1ff25e8c8ad523088de87e3b82ac62cd275c2e240733d5bd", 
+                                    "Size": "335872 bytes"
+                                }, 
+                                "SCAN_YARA": {
+                                    "ft_exe": {
+                                        "company": "Emerson", 
+                                        "lastmod": "20141217", 
+                                        "desc": "Simple signature to trigger on PE files.", 
+                                        "author": "Jason Batchelor"
+                                    }
+                                }, 
+                                "META_PE": {
+                                    "CRC": [
+                                        "Claimed: 0x0", 
+                                        "Actual: 0x55f86"
+                                    ], 
+                                    "Architecture": "x86", 
+                                    "Characteristics": {
+                                        "ASLR": "Disabled", 
+                                        "DEP": "Disabled", 
+                                        "WDM_DRIVER": "Disabled", 
+                                        "FORCE_INTEGRITY": "Disabled", 
+                                        "TERMINAL_SERVER_AWARE": "Disabled", 
+                                        "NO_ISOLATION": "Disabled", 
+                                        "SEH": "Enabled"
+                                    }, 
+                                    "Resource Types": [
+                                        "RT_ICON", 
+                                        "RT_GROUP_ICON", 
+                                        "RT_VERSION"
+                                    ], 
+                                    "Compiled": "Tue Aug  6 17:12:33 2013 UTC", 
+                                    "Resource Names": [], 
+                                    "Sections": [
+                                        ".text", 
+                                        ".rdata", 
+                                        ".data", 
+                                        ".rsrc"
+                                    ], 
+                                    "File Type": {
+                                        "EXE": "True", 
+                                        "SYSTEM": "False", 
+                                        "DLL": "False"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 
+                "SCAN_YARA": {
+                    "ft_exe": {
+                        "company": "Emerson", 
+                        "lastmod": "20141217", 
+                        "desc": "Simple signature to trigger on PE files.", 
+                        "author": "Jason Batchelor"
+                    }
+                }, 
+                "META_PE": {
+                    "CRC": [
+                        "Claimed: 0x0", 
+                        "Actual: 0x606a0"
+                    ], 
+                    "Architecture": "x86", 
+                    "Characteristics": {
+                        "ASLR": "Disabled", 
+                        "DEP": "Enabled", 
+                        "WDM_DRIVER": "Disabled", 
+                        "FORCE_INTEGRITY": "Disabled", 
+                        "TERMINAL_SERVER_AWARE": "Enabled", 
+                        "NO_ISOLATION": "Disabled", 
+                        "SEH": "Enabled"
+                    }, 
+                    "Resource Types": [
+                        "RT_BITMAP", 
+                        "RT_ICON", 
+                        "RT_DIALOG", 
+                        "RT_STRING", 
+                        "RT_GROUP_ICON", 
+                        "RT_MANIFEST"
+                    ], 
+                    "Compiled": "Thu Aug 22 12:09:07 2013 UTC", 
+                    "Resource Names": [], 
+                    "Sections": [
+                        ".text", 
+                        ".rdata", 
+                        ".data", 
+                        ".rsrc"
+                    ], 
+                    "File Type": {
+                        "EXE": "True", 
+                        "SYSTEM": "False", 
+                        "DLL": "False"
+                    }
+                }
+            }
+        }
+    }, 
+    "Interactive": true, 
+    "Alert": false, 
+    "Summary": {
+        "Yara": [
+            "compressed_exe_in_rar", 
+            "compressed_exe_in_zip", 
+            "ft_exe", 
+            "ft_office_open_xml", 
+            "ft_pdf", 
+            "ft_rar", 
+            "ft_zip", 
+            "misc_compressed_exe", 
+            "misc_ooxml_core_properties"
+        ], 
+        "Modules": [
+            "EXTRACT_EMBEDDED", 
+            "EXTRACT_RAR", 
+            "EXTRACT_ZIP", 
+            "META_BASIC_INFO", 
+            "META_OOXML", 
+            "META_PDF", 
+            "META_PE", 
+            "SCAN_YARA"
+        ]
+    }
+}
