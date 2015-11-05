@@ -58,7 +58,7 @@ Some key advantages to Bro integration are:
  * Limit the size of the file you extracting if desired
  * Control over MIME types you care to pass on to FSF
 
-###How can you get access to the subobjects that are recursively processed?###
+###How can I get access to the subobjects that are recursively processed?###
 
 Ah, so are you tired of using `hachoir-subfile` + `dd` to carve out files during static analysis? Or perhaps running `unzip` or `unrar` to get decompressed files, `upx -d` to get unpacked files, or `OfficeMalScan` to get macros over and over is getting old? 
 
@@ -72,9 +72,11 @@ emr-fsf-client macro_test --full
 Subobjects of macro_test successfully written to: fsf_dump_1446676465_6ba593d8d5defd6fbaa96a1ef2bc601d
 ```
 
-###Okay I think I understand, but I'd like visual representation on what does a 'report' look like?###
+###Okay I think I understand, but I'd like visual representation on what a 'report' looks like?###
 
 Take a look a the following graphic in [docs/Example Test.png](https://github.com/EmersonElectricCo/fsf/blob/master/docs/Example%20Test.png). That represents the file `test.zip` which may be found in [docs/Test.zip](https://github.com/EmersonElectricCo/fsf/blob/master/docs/Test.zip). That file, when recursively processed using FSF outputs what's found in [docs/Test.json](https://github.com/EmersonElectricCo/fsf/blob/master/docs/Test.json).
+
+Each object within this file represents an opportunity to collect/enrich intelligence to drive more informed detections, adversary awareness, correlations, and overall analytical tradecraft.
 
 Requirements
 ------------

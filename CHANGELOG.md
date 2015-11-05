@@ -1,7 +1,7 @@
 
 11/05/2015
 ----------
-* Changes to core code to accomodate:
+* Changes to core code to accomodate the following:
  * Point client to more than one FSF server if desired
  * Added option for analyst to dump all subobjects returned to client
  * Added summary key value pairs for list of unique Yara signature hits as well as modules run with results. Helps to better digest output.
