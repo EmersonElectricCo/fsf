@@ -18,6 +18,7 @@ The following is a bulleted list of important files within the framework and the
 The scanner can be invoked in two modes 
 
 * _Not-interactive mode_ - Not running in interactive mode will cause results to be logged passively to the server only. The data sent will also be __REMOVED__ from the client after it is sent. Only files that meet archival criteria will be saved on the server in the configured export directory. This mode is generally used for automated file extraction operations, not analyst interaction.
+ * _Full_ - Dump all subobjects of submitted file to current directory. Format or directory name is `fsf_dump_[epoch time]_[md5 hash of scan results]`. Currently only supported in interactive mode (default). 
 * _Interactive mode_ - This is the default mode, primarily used for analyst interaction. Results are displayed to the analyst and are also logged on the server in the configured location. Files sent are not deleted off the system and are not able to be alerted on. This makes the most sense, as analysts will be scanning known malware specimens that do not require an alert.
 
 Module Overview
@@ -48,6 +49,8 @@ Modules are granted access to a scanner object which has the following attribute
 * Scan Log - (Logger Object) - Writing to scan logger file
 * Timeout - (Int) - How long each module has before it is forced to exit
 * Alert - (Boolean) - Value sets the alert key 
+* Full - (Boolean) - Value too see if user wants all subobjects
+* Subobjects - (List) - Storage for different subobjects returned from modules
 
 ###File Recursion###
 
@@ -174,7 +177,17 @@ Next, move over to the fsf-client and ensure the `conf/config.py` file is pointi
          }
      },
      "Interactive": true,
-     "Alert": true
+     "Alert": true,
+     "Summary": {
+         "Yara": [
+             "my_test"
+         ],
+         "Modules": [
+             "META_BASIC_INFO",
+             "META_TEST_DECODE",
+             "SCAN_YARA"
+         ]
+     }
  }
 ```
 

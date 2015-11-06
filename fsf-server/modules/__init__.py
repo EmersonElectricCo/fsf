@@ -7,4 +7,6 @@ __all__ = ['META_BASIC_INFO',
            'META_PDF',
            'META_OOXML',
            'EXTRACT_SWF',
-           'META_OLECF',]
+           'META_OLECF',
+           'EXTRACT_VBA_MACRO',
+           'EXTRACT_UPX',]

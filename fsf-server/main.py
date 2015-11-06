@@ -4,7 +4,7 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 04/22/2015
+# 10/30/2015
 '''
    Copyright 2015 Emerson Electric Co.
 
@@ -43,7 +43,6 @@ class ScannerDaemon(Daemon):
          sys.exit(2)
 
       fsf_server_thread = threading.Thread(target=self.fsf_server.serve_forever)
-      #fsf_server_thread.daemon = True
       fsf_server_thread.start()
 
 class ForkingTCPRequestHandler(SocketServer.BaseRequestHandler):
@@ -62,8 +61,7 @@ class ForkingTCPRequestHandler(SocketServer.BaseRequestHandler):
          msg_len = struct.unpack('>I', raw_msg_len)[0]
          data = ''
 
-         while len(data) < msg_len:
-            
+         while len(data) < msg_len:      
             recv_buff = self.request.recv(msg_len - len(data))
             data += recv_buff
 
@@ -76,9 +74,9 @@ class ForkingTCPRequestHandler(SocketServer.BaseRequestHandler):
          self.request.close()
 
    def process_data(self, data, s):
-
+      # Get data for initial report generation
       try:
-         s.filename, s.not_interactive, s.file = data.split('FSF_RPC')
+         s.filename, s.not_interactive, s.full, s.file = data.split('FSF_RPC')
          results = s.scan_file()
 
          if s.not_interactive == 'True':
@@ -88,9 +86,31 @@ class ForkingTCPRequestHandler(SocketServer.BaseRequestHandler):
             msg = json.dumps(results, indent=4, sort_keys=False)
             buffer = struct.pack('>I', len(msg)) + msg
             self.request.sendall(buffer)
+            if s.full == 'True':
+               self.process_subobjects(s)
+
       except:
          e = sys.exc_info()[0]
          s.dbg_h.error('%s There was an error generating scanner results. Error: %s' % (dt.now(), e))
+
+   def process_subobjects(self, s):
+      # If client requests full dump of subobjects, we should have them ready here
+      try:
+         if len(s.sub_objects) > 0:
+            sub_status = 'Data'
+            self.request.sendall(sub_status)
+            for i in xrange(len(s.sub_objects)-1, -1, -1):
+               sub_count = struct.pack('>I', i)
+               obj_size = struct.pack('>I', len(s.sub_objects[i]))
+               buffer = sub_count + obj_size + s.sub_objects[i]
+               self.request.sendall(buffer)
+         elif len(s.sub_objects) == 0:
+            sub_status = 'Null'
+            self.request.sendall(sub_status)
+
+      except:
+         e = sys.exc_info()[0]
+         s.dbg_h.error('%s There was an error dumping sub object data. Error: %s' % (dt.now(), e))
 
 class ForkingTCPServer(SocketServer.ForkingMixIn, SocketServer.TCPServer):
    pass

@@ -4,7 +4,7 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 04/22/2015
+# 10/30/2015
 '''
    Copyright 2015 Emerson Electric Co.
 
@@ -44,6 +44,8 @@ class Scanner:
       self.scan_h = ""
       self.timeout = config.SCANNER_CONFIG['TIMEOUT']
       self.alert = False
+      self.full = ""
+      self.sub_objects = []
 
    def check_directories(self):
 
