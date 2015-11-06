@@ -46,10 +46,15 @@ RUN apt-get -y install software-properties-common && \
   make \
   python-dev \
   python-pip \
+  python-setuptools \
   unrar \
   unzip \
+  upx-ucl \
   vim \
-  wget
+  wget && \
+
+# Update setuptools
+  easy_install -U setuptools
 
 # Retrieve current version of Yara via wget, verify known good hash and install Yara
 RUN cd /tmp && \
@@ -124,4 +129,4 @@ ENV HOME /home/nonroot
 ENV USER nonroot
 WORKDIR /home/nonroot/workdir
 
-ENTRYPOINT sed -i "/^SERVER_CONFIG/ s/127\.0\.0\.1/$(hostname -i)/" /home/nonroot/fsf/fsf-client/conf/config.py && main.py start && printf "\n\n" && echo "<----->" && echo "FSF server daemonized!" &&  echo "<----->" && printf "\n" && echo "Invoke fsf_client.py by giving it a file as an argumenti like so:" && printf "\n" && echo "fsf_client.py <file>"  && printf "\n" && echo "Alternatively, Invoke fsf_client.py by giving it a file as an argument and pass to jq so you can interact extensively with the JSON output like so:" && printf "\n" && echo "fsf_client.py <file> | jq - C . | less -r" && printf "\n" && /bin/bash
+ENTRYPOINT sed -i "/^SERVER_CONFIG/ s/127\.0\.0\.1/$(hostname -i)/" /home/nonroot/fsf/fsf-client/conf/config.py && main.py start && printf "\n\n" && echo "<----->" && echo "FSF server daemonized!" &&  echo "<----->" && printf "\n" && echo "Invoke fsf_client.py by giving it a file as an argument:" && printf "\n" && echo "fsf_client.py <file>"  && printf "\n" && echo "Alternatively, Invoke fsf_client.py by giving it a file as an argument and pass to jq so you can interact extensively with the JSON output:" && printf "\n" && echo "fsf_client.py <file> | jq - C . | less -r" && printf "\n" && echo "To access all of the subobjects that are recursively processed, simply add --full when invoking fsf_client.py:" && printf "\n" && echo "fsf_client.py <file> --full" && printf "\n" && /bin/bash
