@@ -1,3 +1,6 @@
+11/06/2015
+----------
+* Docker image updated (thanks wzod!)
 
 11/05/2015
 ----------
