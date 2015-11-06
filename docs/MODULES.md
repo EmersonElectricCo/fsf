@@ -33,7 +33,7 @@ There is a `modules/template.py` file in the modules directory that is a simple 
  * This is what FSF will call when your module is plugged in
  * This function must accept two parameters, a scanner object and a buffer to process
  * The main function must return a dictionary
-  * Empty dictionary objects are deleted before displaced
+  * Empty dictionary objects are deleted before displayed
 
 ###Scanner Object###
 
