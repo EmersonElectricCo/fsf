@@ -67,7 +67,7 @@ Well you can certainly use FSF to do the heavy lifting if you'd like. It incorpo
 Word of caution however, make sure you understand how to do it the hard way first!
 
 ```
-emr-fsf-client macro_test --full
+fsf-client macro_test --full
 ...normal report information...
 Subobjects of macro_test successfully written to: fsf_dump_1446676465_6ba593d8d5defd6fbaa96a1ef2bc601d
 ```
