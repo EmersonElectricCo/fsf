@@ -1,3 +1,7 @@
+11/09/2015
+----------
+* Added detailed step-by-step installation instructions for Ubuntu and CentOS platforms. (thanks for the nudge cfossace!)
+
 11/06/2015
 ----------
 * Docker image updated (thanks wzod!)
