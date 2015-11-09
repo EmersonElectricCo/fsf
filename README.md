@@ -78,24 +78,14 @@ Take a look a the following graphic in [docs/Example Test.png](https://github.co
 
 Each object within this file represents an opportunity to collect/enrich intelligence to drive more informed detections, adversary awareness, correlations, and overall analytical tradecraft.
 
-Requirements
+Installation
 ------------
 
 FSF has been tested to work successfully on CentOS and Ubuntu distributions.
 
-Below are steps to setup on CentOS and should be adaptable to other distributions.
-* Update with latest default packages
-* Install Yara and Yara Python module
- * Make sure you can import the Python Yara module! Sometimes you need to manually add the library path in `/etc/ld.so.conf.d`.
-* Turn on the EPEL repo 
- * yum install epel-release
-* Install following rpm packages (yum install)
- * python-argparse python-devel python-pip ssdeep-devel libffi-devel
-* Install unrar and UPX from and RPM repo such as RPMForge
-		
-* Install module dependencies
- * `easy_install -U setuptools`
- * `pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools`
+Please refer to [docs/INSTALL.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/INSTALL.md) for a detailed, step-by-step guide on how to get started with either platform.
+
+Alternatively, you can check out our [Dockerfile](https://github.com/EmersonElectricCo/fsf/blob/master/Docker/Dockerfile) if you'd like.
 
 Setup
 -----
