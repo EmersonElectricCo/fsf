@@ -20,6 +20,7 @@ The scanner can be invoked in two modes
 * _Not-interactive mode_ - Not running in interactive mode will cause results to be logged passively to the server only. The data sent will also be __REMOVED__ from the client after it is sent. Only files that meet archival criteria will be saved on the server in the configured export directory. This mode is generally used for automated file extraction operations, not analyst interaction.
 * _Interactive mode_ - This is the default mode, primarily used for analyst interaction. Results are displayed to the analyst and are also logged on the server in the configured location. Files sent are not deleted off the system and are not able to be alerted on. This makes the most sense, as analysts will be scanning known malware specimens that do not require an alert.
  * _Full_ - Dump all subobjects of submitted file to current directory. Format or directory name is `fsf_dump_[epoch time]_[md5 hash of scan results]`. Currently only supported in interactive mode (default). 
+
 Module Overview
 ------------
 All modules are stored in the _modules_ directory and follow a loosely defined naming convention where the META prefix is sole purposed for returning metadata from a parsed buffer and EXTRACT is used to denote modules that do some level of decoding or decompression, perhaps in addition to returning metadata. 
