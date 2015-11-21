@@ -4,7 +4,7 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 10/30/2015
+# 12/30/2015
 '''
    Copyright 2015 Emerson Electric Co.
 
@@ -51,7 +51,7 @@ class FSFClient:
 
       sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       msg = '%sFSF_RPC%sFSF_RPC%sFSF_RPC%s' % (self.filename, self.not_interactive, self.full, self.file)
-      buffer = struct.pack('>I', len(msg)) + msg
+      buffer = struct.pack('>I', len(msg)) + 'FSF_RPC' + msg
 
       try:
          sock.connect((self.host, self.port))

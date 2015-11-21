@@ -26,4 +26,5 @@ triggers = [('ft_zip', ['EXTRACT_ZIP'], False),
     ('ft_tar', ['EXTRACT_TAR'], False),
     ('ft_gzip', ['EXTRACT_GZIP'], False),
     ('misc_pe_signature', ['META_PE_SIGNATURE'], False),
+    ('ft_cab', ['EXTRACT_CAB'], False),
      ]

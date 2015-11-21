@@ -9,6 +9,8 @@ include "ft_office_open_xml.yara"
 include "ft_rtf.yara"
 include "ft_tar.yara"
 include "ft_gzip.yara"
+include "ft_jar.yara"
+include "ft_cab.yara"
 
 // Misc Signatures
 include "misc_ooxml_core_properties.yara"

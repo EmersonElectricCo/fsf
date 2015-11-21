@@ -13,4 +13,5 @@ __all__ = ['META_BASIC_INFO',
            'EXTRACT_RTF_OBJ',
            'EXTRACT_GZIP',
            'EXTRACT_TAR',
-           'META_PE_SIGNATURE']
+           'META_PE_SIGNATURE',
+           'EXTRACT_CAB']
