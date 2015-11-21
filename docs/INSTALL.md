@@ -11,12 +11,12 @@ Install the following required packages. Once you complete this step, the rest o
 ###Ubuntu###
 
 ```
-sudo apt-get install autoconf dh-autoreconf python-dev libpython2.7-stdlib python-pip libffi-dev ssdeep upx unrar libfuzzy-dev unzip wget vim
+sudo apt-get install autoconf dh-autoreconf python-dev libpython2.7-stdlib python-pip libffi-dev ssdeep upx unrar libfuzzy-dev unzip wget vim libssl-dev
 ```
 
 ###CentOS###
 
-`sudo yum install autoconf python-devel automake wget vim libtool `
+`sudo yum install autoconf python-devel automake wget vim libtool openssl openssl-devel`
 
 Turn on EPEL repo.
 
@@ -68,7 +68,7 @@ Install the following Python modules using `pip`.
 
 ```
 sudo easy_install -U setuptools
-sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools
+sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1
 ```
 
 Install FSF

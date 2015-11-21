@@ -1,6 +1,6 @@
 {
-    "Scan Time": "2015-11-04 22:53:14.236713", 
-    "Filename": "test.zip", 
+    "Scan Time": "2015-11-21 00:31:54.474072", 
+    "Filename": "Test.zip", 
     "Object": {
         "META_BASIC_INFO": {
             "SHA1": "872f221d3a893afb3895f3eae82b7877ba38b655", 
@@ -27,7 +27,7 @@
         }, 
         "EXTRACT_ZIP": {
             "Object_0": {
-                "Filename": "mypdf.pdf", 
+                "Name": "mypdf.pdf", 
                 "Last modified": "2015-06-29 13:52:08", 
                 "Comment": "", 
                 "CRC": "0x54692274", 
@@ -61,7 +61,7 @@
                 }
             }, 
             "Object_1": {
-                "Filename": "Test.docx", 
+                "Name": "Test.docx", 
                 "Last modified": "2015-06-29 13:48:28", 
                 "Comment": "", 
                 "CRC": "0x775f3379", 
@@ -94,7 +94,7 @@
                 }, 
                 "EXTRACT_ZIP": {
                     "Object_11": {
-                        "Filename": "docProps/app.xml", 
+                        "Name": "docProps/app.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x9d3e250c", 
@@ -113,7 +113,7 @@
                         }
                     }, 
                     "Object_10": {
-                        "Filename": "word/fontTable.xml", 
+                        "Name": "word/fontTable.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x4a41e916", 
@@ -132,7 +132,7 @@
                         }
                     }, 
                     "Object_0": {
-                        "Filename": "[Content_Types].xml", 
+                        "Name": "[Content_Types].xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x82872409", 
@@ -151,7 +151,7 @@
                         }
                     }, 
                     "Object_1": {
-                        "Filename": "_rels/.rels", 
+                        "Name": "_rels/.rels", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0xb71a911e", 
@@ -170,7 +170,7 @@
                         }
                     }, 
                     "Object_2": {
-                        "Filename": "word/_rels/document.xml.rels", 
+                        "Name": "word/_rels/document.xml.rels", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x39973b7c", 
@@ -189,7 +189,7 @@
                         }
                     }, 
                     "Object_3": {
-                        "Filename": "word/document.xml", 
+                        "Name": "word/document.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x17aa1c7e", 
@@ -208,7 +208,7 @@
                         }
                     }, 
                     "Object_4": {
-                        "Filename": "word/theme/theme1.xml", 
+                        "Name": "word/theme/theme1.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x2943dd30", 
@@ -227,7 +227,7 @@
                         }
                     }, 
                     "Object_5": {
-                        "Filename": "word/settings.xml", 
+                        "Name": "word/settings.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0xadb1ca9c", 
@@ -246,7 +246,7 @@
                         }
                     }, 
                     "Object_6": {
-                        "Filename": "word/webSettings.xml", 
+                        "Name": "word/webSettings.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x4e16a017", 
@@ -265,7 +265,7 @@
                         }
                     }, 
                     "Object_7": {
-                        "Filename": "word/stylesWithEffects.xml", 
+                        "Name": "word/stylesWithEffects.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x28d89db0", 
@@ -284,7 +284,7 @@
                         }
                     }, 
                     "Object_8": {
-                        "Filename": "docProps/core.xml", 
+                        "Name": "docProps/core.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0xeaea6e7c", 
@@ -320,7 +320,7 @@
                         }
                     }, 
                     "Object_9": {
-                        "Filename": "word/styles.xml", 
+                        "Name": "word/styles.xml", 
                         "Last modified": "1980-01-01 00:00:00", 
                         "Comment": "", 
                         "CRC": "0x858d234e", 
@@ -341,7 +341,7 @@
                 }
             }, 
             "Object_2": {
-                "Filename": "sfx-binary.exe", 
+                "Name": "sfx-binary.exe", 
                 "Last modified": "2015-07-27 15:45:08", 
                 "Comment": "", 
                 "CRC": "0xc761eb70", 
@@ -414,10 +414,16 @@
                                     }
                                 }, 
                                 "META_PE": {
+                                    "File Type": {
+                                        "EXE": "True", 
+                                        "SYSTEM": "False", 
+                                        "DLL": "False"
+                                    }, 
                                     "CRC": [
                                         "Claimed: 0x0", 
                                         "Actual: 0x55f86"
                                     ], 
+                                    "Compiled": "Tue Aug  6 17:12:33 2013 UTC", 
                                     "Architecture": "x86", 
                                     "Characteristics": {
                                         "ASLR": "Disabled", 
@@ -428,23 +434,152 @@
                                         "NO_ISOLATION": "Disabled", 
                                         "SEH": "Enabled"
                                     }, 
-                                    "Resource Types": [
-                                        "RT_ICON", 
-                                        "RT_GROUP_ICON", 
-                                        "RT_VERSION"
-                                    ], 
-                                    "Compiled": "Tue Aug  6 17:12:33 2013 UTC", 
-                                    "Resource Names": [], 
                                     "Sections": [
                                         ".text", 
                                         ".rdata", 
                                         ".data", 
                                         ".rsrc"
                                     ], 
-                                    "File Type": {
-                                        "EXE": "True", 
-                                        "SYSTEM": "False", 
-                                        "DLL": "False"
+                                    "Resource Names": [], 
+                                    "Resource Types": [
+                                        "RT_ICON", 
+                                        "RT_GROUP_ICON", 
+                                        "RT_VERSION"
+                                    ], 
+                                    "Exports": "None", 
+                                    "Imports": {
+                                        "ADVAPI32.dll": [
+                                            "RegCloseKey", 
+                                            "RegQueryValueExA", 
+                                            "RegOpenKeyA", 
+                                            "GetUserNameA", 
+                                            "CopySid", 
+                                            "GetLengthSid", 
+                                            "RegCreateKeyA", 
+                                            "RegSetValueExA"
+                                        ], 
+                                        "KERNEL32.dll": [
+                                            "SetEndOfFile", 
+                                            "SetEnvironmentVariableA", 
+                                            "CompareStringW", 
+                                            "CompareStringA", 
+                                            "HeapSize", 
+                                            "GetExitCodeProcess", 
+                                            "GetLocaleInfoA", 
+                                            "InterlockedExchange", 
+                                            "GetTickCount", 
+                                            "ReadFile", 
+                                            "SetConsoleMode", 
+                                            "GetConsoleMode", 
+                                            "GetStdHandle", 
+                                            "WriteFile", 
+                                            "FreeLibrary", 
+                                            "LoadLibraryA", 
+                                            "GetProcAddress", 
+                                            "CloseHandle", 
+                                            "SetEvent", 
+                                            "GetOverlappedResult", 
+                                            "WaitForSingleObject", 
+                                            "GetLastError", 
+                                            "CreateEventA", 
+                                            "CreateThread", 
+                                            "GetVersionExA", 
+                                            "GetSystemDirectoryA", 
+                                            "FormatMessageA", 
+                                            "GetSystemTimeAdjustment", 
+                                            "GetSystemTime", 
+                                            "GetProcessTimes", 
+                                            "GetCurrentProcess", 
+                                            "GetThreadTimes", 
+                                            "GetCurrentThread", 
+                                            "GlobalMemoryStatus", 
+                                            "QueryPerformanceCounter", 
+                                            "GetCurrentProcessId", 
+                                            "FindClose", 
+                                            "FindNextFileA", 
+                                            "FindFirstFileA", 
+                                            "GetWindowsDirectoryA", 
+                                            "LocalFree", 
+                                            "LocalAlloc", 
+                                            "OpenProcess", 
+                                            "UnmapViewOfFile", 
+                                            "MapViewOfFile", 
+                                            "CreateFileMappingA", 
+                                            "GetCurrentThreadId", 
+                                            "CreateProcessA", 
+                                            "SetHandleInformation", 
+                                            "CreatePipe", 
+                                            "SetCurrentDirectoryA", 
+                                            "GetCurrentDirectoryA", 
+                                            "GetFileTime", 
+                                            "GetFileSize", 
+                                            "CreateFileA", 
+                                            "SetFilePointer", 
+                                            "GetFileAttributesA", 
+                                            "CreateDirectoryA", 
+                                            "WaitForMultipleObjects", 
+                                            "DeleteFileA", 
+                                            "GetEnvironmentVariableA", 
+                                            "GetLocalTime", 
+                                            "GetModuleFileNameA", 
+                                            "GetTimeFormatA", 
+                                            "GetDateFormatA", 
+                                            "HeapAlloc", 
+                                            "HeapReAlloc", 
+                                            "HeapFree", 
+                                            "ExitProcess", 
+                                            "GetModuleHandleA", 
+                                            "TerminateProcess", 
+                                            "GetSystemTimeAsFileTime", 
+                                            "GetCommandLineA", 
+                                            "FlushFileBuffers", 
+                                            "WideCharToMultiByte", 
+                                            "GetTimeZoneInformation", 
+                                            "VirtualProtect", 
+                                            "VirtualAlloc", 
+                                            "GetSystemInfo", 
+                                            "VirtualQuery", 
+                                            "LCMapStringA", 
+                                            "MultiByteToWideChar", 
+                                            "LCMapStringW", 
+                                            "SetHandleCount", 
+                                            "GetFileType", 
+                                            "GetStartupInfoA", 
+                                            "GetStringTypeA", 
+                                            "GetStringTypeW", 
+                                            "HeapDestroy", 
+                                            "HeapCreate", 
+                                            "VirtualFree", 
+                                            "UnhandledExceptionFilter", 
+                                            "FreeEnvironmentStringsA", 
+                                            "GetEnvironmentStrings", 
+                                            "FreeEnvironmentStringsW", 
+                                            "GetEnvironmentStringsW", 
+                                            "SetStdHandle", 
+                                            "GetACP", 
+                                            "GetOEMCP", 
+                                            "GetCPInfo", 
+                                            "RtlUnwind"
+                                        ], 
+                                        "USER32.dll": [
+                                            "SendMessageA", 
+                                            "FindWindowA", 
+                                            "GetForegroundWindow", 
+                                            "GetCapture", 
+                                            "GetClipboardOwner", 
+                                            "GetQueueStatus", 
+                                            "GetCursorPos"
+                                        ]
+                                    }, 
+                                    "StringFileInfo": {
+                                        "LegalCopyright": "Copyright \\xa9 1997-2013 Simon Tatham.", 
+                                        "InternalName": "PSFTP", 
+                                        "FileVersion": "Release 0.63", 
+                                        "CompanyName": "Simon Tatham", 
+                                        "ProductName": "PuTTY suite", 
+                                        "ProductVersion": "Release 0.63", 
+                                        "FileDescription": "Command-line interactive SFTP client", 
+                                        "OriginalFilename": "PSFTP"
                                     }
                                 }
                             }
@@ -460,10 +595,16 @@
                     }
                 }, 
                 "META_PE": {
+                    "File Type": {
+                        "EXE": "True", 
+                        "SYSTEM": "False", 
+                        "DLL": "False"
+                    }, 
                     "CRC": [
                         "Claimed: 0x0", 
                         "Actual: 0x606a0"
                     ], 
+                    "Compiled": "Thu Aug 22 12:09:07 2013 UTC", 
                     "Architecture": "x86", 
                     "Characteristics": {
                         "ASLR": "Disabled", 
@@ -474,6 +615,13 @@
                         "NO_ISOLATION": "Disabled", 
                         "SEH": "Enabled"
                     }, 
+                    "Sections": [
+                        ".text", 
+                        ".rdata", 
+                        ".data", 
+                        ".rsrc"
+                    ], 
+                    "Resource Names": [], 
                     "Resource Types": [
                         "RT_BITMAP", 
                         "RT_ICON", 
@@ -482,19 +630,241 @@
                         "RT_GROUP_ICON", 
                         "RT_MANIFEST"
                     ], 
-                    "Compiled": "Thu Aug 22 12:09:07 2013 UTC", 
-                    "Resource Names": [], 
-                    "Sections": [
-                        ".text", 
-                        ".rdata", 
-                        ".data", 
-                        ".rsrc"
-                    ], 
-                    "File Type": {
-                        "EXE": "True", 
-                        "SYSTEM": "False", 
-                        "DLL": "False"
-                    }
+                    "Exports": [], 
+                    "Imports": {
+                        "COMDLG32.dll": [
+                            "GetSaveFileNameW", 
+                            "CommDlgExtendedError", 
+                            "GetOpenFileNameW"
+                        ], 
+                        "GDI32.dll": [
+                            "GetDeviceCaps", 
+                            "CreateCompatibleDC", 
+                            "GetObjectW", 
+                            "CreateCompatibleBitmap", 
+                            "SelectObject", 
+                            "StretchBlt", 
+                            "DeleteDC", 
+                            "DeleteObject"
+                        ], 
+                        "SHELL32.dll": [
+                            "SHChangeNotify", 
+                            "SHGetFileInfoW", 
+                            "SHGetMalloc", 
+                            "SHGetSpecialFolderLocation", 
+                            "SHGetPathFromIDListW", 
+                            "SHBrowseForFolderW", 
+                            "ShellExecuteExW", 
+                            "SHFileOperationW"
+                        ], 
+                        "KERNEL32.dll": [
+                            "ReadFile", 
+                            "GetFileAttributesW", 
+                            "SetFileAttributesW", 
+                            "FindNextFileW", 
+                            "GetFullPathNameW", 
+                            "GetModuleFileNameW", 
+                            "FindResourceW", 
+                            "GetModuleHandleW", 
+                            "FreeLibrary", 
+                            "GetProcAddress", 
+                            "LoadLibraryW", 
+                            "GetCurrentProcessId", 
+                            "GetLocaleInfoW", 
+                            "GetNumberFormatW", 
+                            "ExpandEnvironmentStringsW", 
+                            "WaitForSingleObject", 
+                            "DosDateTimeToFileTime", 
+                            "GetDateFormatW", 
+                            "GetTimeFormatW", 
+                            "FileTimeToSystemTime", 
+                            "FileTimeToLocalFileTime", 
+                            "GetExitCodeProcess", 
+                            "GetTempPathW", 
+                            "MoveFileExW", 
+                            "Sleep", 
+                            "UnmapViewOfFile", 
+                            "MapViewOfFile", 
+                            "GetCommandLineW", 
+                            "CreateFileMappingW", 
+                            "GetTickCount", 
+                            "SetEnvironmentVariableW", 
+                            "OpenFileMappingW", 
+                            "CreateThread", 
+                            "EnterCriticalSection", 
+                            "LeaveCriticalSection", 
+                            "GetProcessAffinityMask", 
+                            "ReleaseSemaphore", 
+                            "ResetEvent", 
+                            "DeleteCriticalSection", 
+                            "SetEvent", 
+                            "SetThreadPriority", 
+                            "InitializeCriticalSection", 
+                            "CreateEventW", 
+                            "CreateSemaphoreW", 
+                            "SystemTimeToFileTime", 
+                            "GetSystemTime", 
+                            "LocalFileTimeToFileTime", 
+                            "WideCharToMultiByte", 
+                            "MultiByteToWideChar", 
+                            "CompareStringW", 
+                            "IsDBCSLeadByte", 
+                            "FindFirstFileW", 
+                            "GetFileType", 
+                            "SetCurrentDirectoryW", 
+                            "WriteConsoleW", 
+                            "GetConsoleOutputCP", 
+                            "WriteConsoleA", 
+                            "SetStdHandle", 
+                            "GetLocaleInfoA", 
+                            "GetStringTypeW", 
+                            "GetStringTypeA", 
+                            "LoadLibraryA", 
+                            "GetConsoleMode", 
+                            "GetConsoleCP", 
+                            "InitializeCriticalSectionAndSpinCount", 
+                            "QueryPerformanceCounter", 
+                            "SetHandleCount", 
+                            "GetEnvironmentStringsW", 
+                            "FreeEnvironmentStringsW", 
+                            "GetEnvironmentStrings", 
+                            "FreeEnvironmentStringsA", 
+                            "LCMapStringW", 
+                            "LCMapStringA", 
+                            "IsValidCodePage", 
+                            "GetOEMCP", 
+                            "GetACP", 
+                            "GetModuleFileNameA", 
+                            "ExitProcess", 
+                            "HeapSize", 
+                            "IsDebuggerPresent", 
+                            "SetUnhandledExceptionFilter", 
+                            "UnhandledExceptionFilter", 
+                            "TerminateProcess", 
+                            "VirtualAlloc", 
+                            "VirtualFree", 
+                            "HeapCreate", 
+                            "InterlockedDecrement", 
+                            "GetCurrentThreadId", 
+                            "InterlockedIncrement", 
+                            "TlsFree", 
+                            "TlsSetValue", 
+                            "TlsAlloc", 
+                            "TlsGetValue", 
+                            "GetStartupInfoA", 
+                            "GetCommandLineA", 
+                            "RaiseException", 
+                            "GetSystemTimeAsFileTime", 
+                            "SetEndOfFile", 
+                            "SetFilePointer", 
+                            "GetStdHandle", 
+                            "WriteFile", 
+                            "FlushFileBuffers", 
+                            "GetLongPathNameW", 
+                            "MoveFileW", 
+                            "GetShortPathNameW", 
+                            "CreateDirectoryW", 
+                            "RemoveDirectoryW", 
+                            "GlobalAlloc", 
+                            "DeleteFileW", 
+                            "FindClose", 
+                            "CreateFileW", 
+                            "DeviceIoControl", 
+                            "SetFileTime", 
+                            "GetCurrentProcess", 
+                            "CloseHandle", 
+                            "CreateHardLinkW", 
+                            "SetLastError", 
+                            "GetLastError", 
+                            "GetCurrentDirectoryW", 
+                            "CreateFileA", 
+                            "GetCPInfo", 
+                            "HeapAlloc", 
+                            "HeapReAlloc", 
+                            "HeapFree", 
+                            "RtlUnwind"
+                        ], 
+                        "OLEAUT32.dll": [
+                            null
+                        ], 
+                        "ADVAPI32.dll": [
+                            "RegOpenKeyExW", 
+                            "RegQueryValueExW", 
+                            "RegCreateKeyExW", 
+                            "RegSetValueExW", 
+                            "RegCloseKey", 
+                            "SetFileSecurityW", 
+                            "OpenProcessToken", 
+                            "LookupPrivilegeValueW", 
+                            "AdjustTokenPrivileges"
+                        ], 
+                        "ole32.dll": [
+                            "CLSIDFromString", 
+                            "CoCreateInstance", 
+                            "OleInitialize", 
+                            "OleUninitialize", 
+                            "CreateStreamOnHGlobal"
+                        ], 
+                        "SHLWAPI.dll": [
+                            "SHAutoComplete"
+                        ], 
+                        "USER32.dll": [
+                            "EnableWindow", 
+                            "ShowWindow", 
+                            "GetDlgItem", 
+                            "MessageBoxW", 
+                            "FindWindowExW", 
+                            "GetParent", 
+                            "MapWindowPoints", 
+                            "CreateWindowExW", 
+                            "UpdateWindow", 
+                            "LoadCursorW", 
+                            "RegisterClassExW", 
+                            "DefWindowProcW", 
+                            "DestroyWindow", 
+                            "CopyRect", 
+                            "IsWindow", 
+                            "CharUpperW", 
+                            "OemToCharBuffA", 
+                            "LoadIconW", 
+                            "PostMessageW", 
+                            "GetSysColor", 
+                            "SetForegroundWindow", 
+                            "WaitForInputIdle", 
+                            "IsWindowVisible", 
+                            "DialogBoxParamW", 
+                            "DestroyIcon", 
+                            "SetFocus", 
+                            "GetClassNameW", 
+                            "SendDlgItemMessageW", 
+                            "EndDialog", 
+                            "GetDlgItemTextW", 
+                            "SetDlgItemTextW", 
+                            "wvsprintfW", 
+                            "SendMessageW", 
+                            "GetDC", 
+                            "ReleaseDC", 
+                            "PeekMessageW", 
+                            "GetMessageW", 
+                            "TranslateMessage", 
+                            "DispatchMessageW", 
+                            "LoadStringW", 
+                            "GetWindowRect", 
+                            "GetClientRect", 
+                            "SetWindowPos", 
+                            "GetWindowTextW", 
+                            "SetWindowTextW", 
+                            "GetSystemMetrics", 
+                            "GetWindow", 
+                            "GetWindowLongW", 
+                            "SetWindowLongW", 
+                            "LoadBitmapW"
+                        ], 
+                        "COMCTL32.dll": [
+                            "InitCommonControlsEx"
+                        ]
+                    }, 
+                    "StringFileInfo": "None"
                 }
             }
         }

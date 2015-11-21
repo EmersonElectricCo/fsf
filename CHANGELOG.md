@@ -1,3 +1,36 @@
+11/23/2015
+----------
+
+* NOTE - please ensure you have the OpenSSL development libraries installed (openssl-devel for RH distros, libssl-dev for Debian) before installing Yara. Otherwise signatures like the newly added `misc_pe_signature.yara` will not work! If you don't have these, please install them and then reinstall Yara. This has been captured in [Yara Issue #378](https://github.com/plusvic/yara/issues/378).
+
+* Updated installation requirements to include Python modules pyasn1 and pyasn1-modules. This is necessary to use META_PE_SIGNATURE.
+
+* Added new modules:
+ * EXTRACT_RTF_OBJ - Get embedded, hexascii encoded, OLE objects within RTFs.
+ * EXTRACT_TAR - Get metadata and embedded objects within a TAR file and extract them. Some interesting goodies in TAR metadata, you should check it out!
+ * EXTRACT_GZIP - Get embedded file within GZIP archive and extract it
+ * META_PE_SIGNATURE - Get certificate metadata from PE files. Long overdue and really useful I hope!
+
+* Improved some modules:
+ * META_PE - Now delivers information on PE imports and export entries as appropriate, also provides version info 
+ * EXTRACT_ZIP - More generous on corrupt ZIP files. It will now process embedded archives the best it can, if one is corrupt, it will move to the next instead of failing entirely
+ * EXTRACT_RAR - Removed StringIO module in imports, was unnecessary
+
+* Added a section on JQ tippers for help interacting FSF JSON output in docs
+ * Filter out multiple nodes from JSON output
+ * Show results from only one module
+ * Contribute your own creative JQ-fu!
+
+* Updated Test.json to accommodate output from module additions
+
+* Updated README.md with notes on JQ use with FSF data
+
+* Added new Yara signatures:
+ * ft_gzip.yara
+ * ft_rtf.yara
+ * ft_tar.yara
+ * misc_pe_signature.yara
+
 11/09/2015
 ----------
 * Added detailed step-by-step installation instructions for Ubuntu and CentOS platforms. (thanks for the nudge cfossace!)
