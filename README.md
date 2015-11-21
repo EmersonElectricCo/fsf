@@ -80,7 +80,7 @@ Each object within this file represents an opportunity to collect/enrich intelli
 
 ###There's a lot of JSON output here... What tools exist to help me interact with this data effectively over the command line?###
 
-[JQ](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/JQ_Examples.md]((https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_Examples.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [JQ Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
+[JQ](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/JQ_Examples.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_Examples.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [JQ Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
 
 Installation
 ------------
