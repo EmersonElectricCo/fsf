@@ -26,26 +26,26 @@ from tempfile import mkstemp
 
 def EXTRACT_RTF_OBJ(s, buff):
 
-	PARENT_RTF_OBJS = {}
-	counter = 0
-	tmpfd, tmpfile = mkstemp(suffix='.rtf')
-	tmpf = os.fdopen(tmpfd, 'wb')
+   PARENT_RTF_OBJS = {}
+   counter = 0
+   tmpfd, tmpfile = mkstemp(suffix='.rtf')
+   tmpf = os.fdopen(tmpfd, 'wb')
 
-	try:
-		tmpf.write(buff)
-		tmpf.close()
-		objs = rtfobj.rtf_iter_objects(tmpfile)
+   try:
+      tmpf.write(buff)
+      tmpf.close()
+      objs = rtfobj.rtf_iter_objects(tmpfile)
 
-		for index, data in objs:
-			CHILD_OBJ = {'Index'  : index,
-							 'Buffer' : data }
-			PARENT_RTF_OBJS['Object_%s' % counter] = CHILD_OBJ
-			counter += 1
+      for index, data in objs:
+         CHILD_OBJ = {'Index'  : index,
+                      'Buffer' : data }
+         PARENT_RTF_OBJS['Object_%s' % counter] = CHILD_OBJ
+         counter += 1
 
-	finally:
-		os.remove(tmpfile)
+   finally:
+      os.remove(tmpfile)
 
-	return PARENT_RTF_OBJS
+   return PARENT_RTF_OBJS
 
 if __name__ == '__main__':
-	print EXTRACT_RTF_OBJ(None, sys.stdin.read())
+   print EXTRACT_RTF_OBJ(None, sys.stdin.read())

@@ -24,14 +24,14 @@ import gzip
 from StringIO import StringIO
 
 def EXTRACT_GZIP(s, buff):
-	EXTRACT_GZIP = {}
+   EXTRACT_GZIP = {}
 
-	# Only one file within a GZIP, you'll never have multiple ones
-	# For that, you'll likely see something like GZ+TAR
-	gzf = gzip.GzipFile(fileobj=StringIO(buff), mode='rb')
-	EXTRACT_GZIP['Buffer'] = gzf.read()
+   # Only one file within a GZIP, you'll never have multiple ones
+   # For that, you'll likely see something like GZ+TAR
+   gzf = gzip.GzipFile(fileobj=StringIO(buff), mode='rb')
+   EXTRACT_GZIP['Buffer'] = gzf.read()
 
-	return EXTRACT_GZIP
+   return EXTRACT_GZIP
 
 if __name__ == '__main__':
-	print EXTRACT_GZIP(None, sys.stdin.read())
+   print EXTRACT_GZIP(None, sys.stdin.read())
