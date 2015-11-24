@@ -62,12 +62,12 @@ Some key advantages to Bro integration are:
 
 Ah, so are you tired of using `hachoir-subfile` + `dd` to carve out files during static analysis? Or perhaps running `unzip` or `unrar` to get decompressed files, `upx -d` to get unpacked files, or `OfficeMalScan` to get macros over and over is getting old? 
 
-Well you can certainly use FSF to do the heavy lifting if you'd like. It incorporates the components that make the above tools so helpful into the frameowk. For other use cases, all you you need is to ensure the intelligence to do what you want is built into the framework (Yara + Module)! Several open source modules included with the package help with this. Just use the --full option when invoking the client and all the subobjects will collect in a new directory.
+Well you can certainly use FSF to do the heavy lifting if you'd like. It incorporates the components that make the above tools so helpful into the framework. For other use cases, all you you need is to ensure the intelligence to do what you want is built into the framework (Yara + Module)! Several open source modules included with the package help with this. Just use the --full option when invoking the client and all the subobjects will collect in a new directory.
 
 Word of caution however, make sure you understand how to do it the hard way first!
 
 ```
-emr-fsf-client macro_test --full
+fsf-client macro_test --full
 ...normal report information...
 Subobjects of macro_test successfully written to: fsf_dump_1446676465_6ba593d8d5defd6fbaa96a1ef2bc601d
 ```
@@ -78,24 +78,18 @@ Take a look a the following graphic in [docs/Example Test.png](https://github.co
 
 Each object within this file represents an opportunity to collect/enrich intelligence to drive more informed detections, adversary awareness, correlations, and overall analytical tradecraft.
 
-Requirements
+###There's a lot of JSON output here... What tools exist to help me interact with this data effectively over the command line?###
+
+[JQ](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/JQ_Examples.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_Examples.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [JQ Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
+
+Installation
 ------------
 
 FSF has been tested to work successfully on CentOS and Ubuntu distributions.
 
-Below are steps to setup on CentOS and should be adaptable to other distributions.
-* Update with latest default packages
-* Install Yara and Yara Python module
- * Make sure you can import the Python Yara module! Sometimes you need to manually add the library path in `/etc/ld.so.conf.d`.
-* Turn on the EPEL repo 
- * yum install epel-release
-* Install following rpm packages (yum install)
- * python-argparse python-devel python-pip ssdeep-devel libffi-devel
-* Install unrar and UPX from and RPM repo such as RPMForge
-		
-* Install module dependencies
- * `easy_install -U setuptools`
- * `pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools`
+Please refer to [docs/INSTALL.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/INSTALL.md) for a detailed, step-by-step guide on how to get started with either platform.
+
+Alternatively, you can check out our [Dockerfile](https://github.com/EmersonElectricCo/fsf/blob/master/Docker/Dockerfile) if you'd like.
 
 Setup
 -----

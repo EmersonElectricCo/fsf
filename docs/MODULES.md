@@ -18,8 +18,8 @@ The following is a bulleted list of important files within the framework and the
 The scanner can be invoked in two modes 
 
 * _Not-interactive mode_ - Not running in interactive mode will cause results to be logged passively to the server only. The data sent will also be __REMOVED__ from the client after it is sent. Only files that meet archival criteria will be saved on the server in the configured export directory. This mode is generally used for automated file extraction operations, not analyst interaction.
- * _Full_ - Dump all subobjects of submitted file to current directory. Format or directory name is `fsf_dump_[epoch time]_[md5 hash of scan results]`. Currently only supported in interactive mode (default). 
 * _Interactive mode_ - This is the default mode, primarily used for analyst interaction. Results are displayed to the analyst and are also logged on the server in the configured location. Files sent are not deleted off the system and are not able to be alerted on. This makes the most sense, as analysts will be scanning known malware specimens that do not require an alert.
+ * _Full_ - Dump all subobjects of submitted file to current directory. Format or directory name is `fsf_dump_[epoch time]_[md5 hash of scan results]`. Currently only supported in interactive mode (default). 
 
 Module Overview
 ------------
@@ -33,7 +33,7 @@ There is a `modules/template.py` file in the modules directory that is a simple 
  * This is what FSF will call when your module is plugged in
  * This function must accept two parameters, a scanner object and a buffer to process
  * The main function must return a dictionary
-  * Empty dictionary objects are deleted before displaced
+  * Empty dictionary objects are deleted before displayed
 
 ###Scanner Object###
 

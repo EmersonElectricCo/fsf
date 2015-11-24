@@ -9,4 +9,8 @@ __all__ = ['META_BASIC_INFO',
            'EXTRACT_SWF',
            'META_OLECF',
            'EXTRACT_VBA_MACRO',
-           'EXTRACT_UPX',]
+           'EXTRACT_UPX',
+           'EXTRACT_RTF_OBJ',
+           'EXTRACT_GZIP',
+           'EXTRACT_TAR',
+           'META_PE_SIGNATURE']

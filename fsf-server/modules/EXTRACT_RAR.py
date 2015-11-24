@@ -26,7 +26,6 @@ import rarfile
 import os
 from tempfile import mkstemp
 from datetime import datetime
-from StringIO import StringIO
 from collections import OrderedDict
 
 def get_compression_method(field_value):

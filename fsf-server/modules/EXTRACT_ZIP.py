@@ -103,7 +103,7 @@ def EXTRACT_ZIP(s, buff):
       if zi_child.flag_bits & 0x1:
          password_required = True
 
-      CHILD_ZIP = OrderedDict([('Filename', zi_child.filename),
+      CHILD_ZIP = OrderedDict([('Name', zi_child.filename),
                              ('Last modified', datetime(*zi_child.date_time).strftime("%Y-%m-%d %H:%M:%S")),
                              ('Comment', zi_child.comment),
                              ('CRC', hex(zi_child.CRC)),
@@ -114,9 +114,13 @@ def EXTRACT_ZIP(s, buff):
                              ('Password Required', password_required)])
 
       if not password_required and zi_child.file_size != 0:
-         f = zf.open(z, 'r')
-         CHILD_ZIP['Buffer'] = f.read()
-         f.close()
+
+         try:
+            f = zf.open(z, 'r')
+            CHILD_ZIP['Buffer'] = f.read()
+            f.close()
+         except:
+            CHILD_ZIP['Buffer'] = 'Failed to extract this specific archive. Invalid or corrupt?'
 
       EXTRACT_ZIP['Object_%s' % file_num] = CHILD_ZIP
    
@@ -125,3 +129,8 @@ def EXTRACT_ZIP(s, buff):
    zf.close()
 
    return EXTRACT_ZIP
+
+if __name__ == '__main__':
+   # For testing, s object can be None type if unused in function
+   print EXTRACT_ZIP(None, sys.stdin.read())
+

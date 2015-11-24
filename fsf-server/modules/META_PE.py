@@ -23,6 +23,7 @@
 import sys
 import pefile
 import time
+from collections import OrderedDict
 
 def enum_resources(id):
 # Reference: http://msdn.microsoft.com/en-us/library/ms648009%28v=vs.85%29.aspx
@@ -57,7 +58,7 @@ def get_image_hdr_characteristics(pe):
 
    myChars = pe.FILE_HEADER.Characteristics
 
-   HDR_CHARS = { }
+   HDR_CHARS = {}
 
    # Reference: http://msdn.microsoft.com/en-us/library/windows/desktop/ms680313(v=vs.85).aspx
    IMAGE_FILE_EXECUTABLE_IMAGE = 0x2
@@ -110,7 +111,7 @@ def get_dllcharacteristics(pe):
 
    myChars = pe.OPTIONAL_HEADER.DllCharacteristics
 
-   DLL_CHARS = { }
+   DLL_CHARS = {}
 
    # Reference: http://msdn.microsoft.com/en-us/library/windows/desktop/ms680339(v=vs.85).aspx
    DYNAMICBASE_FLAG = 0x0040
@@ -157,18 +158,71 @@ def get_resource_types(pe):
          resource_types.append(enum_resources(res.id))
    return resource_types
 
+def get_exports(pe):
+
+   my_exports = []
+
+   try:
+      pe.DIRECTORY_ENTRY_EXPORT.symbols
+   except:
+      return 'None'
+
+   for exp in pe.DIRECTORY_ENTRY_EXPORT.symbols:
+      my_exports.append(exp.name)
+
+   return my_exports
+
+def get_imports(pe):
+
+   IMPORTS = {}
+
+   try:
+      pe.DIRECTORY_ENTRY_IMPORT
+   except:
+      return 'None'
+
+   for entry in pe.DIRECTORY_ENTRY_IMPORT:
+      my_imports = []
+      for imp in entry.imports:
+         my_imports.append(imp.name)
+      IMPORTS['%s' % entry.dll] = my_imports
+
+   return IMPORTS
+
+def get_stringfileinfo(pe):
+
+   STRINGFILEINFO = {}
+
+   try:
+      pe.FileInfo
+   except:
+      return 'None'
+
+   for fi in pe.FileInfo:
+      if fi.Key == 'StringFileInfo':
+         for st in fi.StringTable:
+            for entry in st.entries.items():
+               k = entry[0].encode('ascii','backslashreplace')
+               v = entry[1].encode('ascii','backslashreplace')
+               STRINGFILEINFO['%s' % k] = v   
+
+   return STRINGFILEINFO
+
 def META_PE(s, buff):
 
    pe = pefile.PE(data=buff)
 
-   META_PE = { 'File Type' : get_image_hdr_characteristics(pe),
-               'CRC' : get_crc(pe),
-               'Compiled' : '%s UTC' % time.asctime(time.gmtime(pe.FILE_HEADER.TimeDateStamp)),
-               'Architecture' : get_machine(pe),
-               'Characteristics' : get_dllcharacteristics(pe),
-               'Sections' : get_sections(pe),
-               'Resource Names' : get_resource_names(pe),
-               'Resource Types' : get_resource_types(pe) }
+   META_PE = OrderedDict([('File Type', get_image_hdr_characteristics(pe)),
+                         ('CRC', get_crc(pe)),
+                        ('Compiled', '%s UTC' % time.asctime(time.gmtime(pe.FILE_HEADER.TimeDateStamp))),
+                        ('Architecture', get_machine(pe)),
+                        ('Characteristics', get_dllcharacteristics(pe)),
+                        ('Sections', get_sections(pe)),
+                        ('Resource Names', get_resource_names(pe)),
+                        ('Resource Types', get_resource_types(pe)),
+                        ('Exports', get_exports(pe)),
+                        ('Imports', get_imports(pe)),
+                        ('StringFileInfo', get_stringfileinfo(pe))])
 
    return META_PE
 
