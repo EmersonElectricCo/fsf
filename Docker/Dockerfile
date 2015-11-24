@@ -37,11 +37,16 @@ USER root
 RUN apt-get -y install software-properties-common && \
   apt-add-repository -y multiverse && \
   apt-get -qq update && apt-get install -y --fix-missing \
+  autoconf \
+  dh-autoreconf \
   automake \
   build-essential \
   git \
   jq \
   libffi-dev \
+  libfuzzy-dev \
+  libpython2.7-stdlib \
+  libssl-dev \
   libtool \
   make \
   python-dev \
@@ -49,7 +54,7 @@ RUN apt-get -y install software-properties-common && \
   python-setuptools \
   unrar \
   unzip \
-  upx-ucl \
+  upx \
   vim \
   wget && \
 
@@ -97,7 +102,9 @@ RUN pip install czipfile \
   xmltodict \
   rarfile \
   pylzma \
-  oletools && \
+  oletools \
+  pyasn1_modules \
+  pyasn1 && \
 
   BUILD_LIB=1 pip install ssdeep
 
