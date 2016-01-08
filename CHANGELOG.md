@@ -1,7 +1,7 @@
 01/08/2016
 ----------
 
-* Updated installation requirements to include cabextract and latest pefile module
+* Updated installation docs to include cabextract and latest pefile module
 
 * Added new module:
 	* EXTRACT_CAB - Extract contents and metadata of MS CAB files. Requires installation of cabextract utility
