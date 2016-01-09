@@ -67,7 +67,7 @@ Well you can certainly use FSF to do the heavy lifting if you'd like. It incorpo
 Word of caution however, make sure you understand how to do it the hard way first!
 
 ```
-fsf-client macro_test --full
+fsf_client.py macro_test --full
 ...normal report information...
 Subobjects of macro_test successfully written to: fsf_dump_1446676465_6ba593d8d5defd6fbaa96a1ef2bc601d
 ```
@@ -101,4 +101,4 @@ Check your configuration settings
  * In [fsf-server](https://github.com/EmersonElectricCo/fsf/tree/master/fsf-server), start up the server using `./main.py start` and it will daemonize 
 * __Client-side__ - In [fsf-client/conf/conf.py](https://github.com/EmersonElectricCo/fsf/blob/master/fsf-client/conf/config.py)
  * Point to your server(s) being used to scan files
- * Submit a file with `fsf-client.py <PATH>`, you can use wildcard for scanning all of the files in a directory
+ * Submit a file with `fsf_client.py <PATH>`, you can use wildcard for scanning all of the files in a directory

@@ -37,16 +37,24 @@ USER root
 RUN apt-get -y install software-properties-common && \
   apt-add-repository -y multiverse && \
   apt-get -qq update && apt-get install -y --fix-missing \
+  autoconf \
   automake \
   build-essential \
+  cabextract \
+  dh-autoreconf \
   git \
   jq \
   libffi-dev \
+  libfuzzy-dev \
+  libpython2.7-stdlib \
+  libssl-dev \
   libtool \
   make \
+  net-tools \
   python-dev \
   python-pip \
   python-setuptools \
+  ssdeep \
   unrar \
   unzip \
   upx-ucl \
@@ -73,20 +81,18 @@ RUN cd /tmp && \
   python setup.py build && \
   python setup.py install && \
 
-# Retrieve current version of ssdeep via wget, verify known good hash and install ssdeep
-  wget -O ssdeep-2.13.tar.gz "http://sourceforge.net/projects/ssdeep/files/ssdeep-2.13/ssdeep-2.13.tar.gz/download" && \
-  echo 6e4ca94457cb50ff3343d4dd585473817a461a55a666da1c5a74667924f0f8c5\ \ ssdeep-2.13.tar.gz > sha256sum-ssdeep && \
-  sha256sum -c sha256sum-ssdeep && \
+# Retrieve current version of pefile via wget, verify known good hash and install pefile
+  wget -O pefile-1.2.10-139.zip "https://github.com/erocarrera/pefile/archive/master.zip" && \
+  echo 6362f500afa3505d4ef92c03639af18abb43996491b2eb67295036c15e57f5d8\ \ pefile-1.2.10-139.zip > sha256sum-pefile && \
+  sha256sum -c sha256sum-pefile && \
 
-  tar vxzf ssdeep-2.13.tar.gz && \
-  cd ssdeep-2.13 && \
-  ./configure && \
-  make && \
-  sudo make install
+  unzip pefile-1.2.10-139.zip && \
+  cd pefile-master && \
+  python setup.py build && \
+  python setup.py install
 
 # Install additional dependencies
 RUN pip install czipfile \
-  pefile \
   hachoir-parser \
   hachoir-core \
   hachoir-regex \
@@ -97,7 +103,9 @@ RUN pip install czipfile \
   xmltodict \
   rarfile \
   pylzma \
-  oletools && \
+  oletools \
+  pyasn1_modules \ 
+  pyasn1 && \
 
   BUILD_LIB=1 pip install ssdeep
 
@@ -105,7 +113,8 @@ RUN pip install czipfile \
 RUN groupadd -r nonroot && \
   useradd -r -g nonroot -d /home/nonroot -s /sbin/nologin -c "Nonroot User" nonroot && \
   mkdir /home/nonroot && \
-  chown -R nonroot:nonroot /home/nonroot
+  chown -R nonroot:nonroot /home/nonroot && \
+  echo "/usr/local/lib" >> /etc/ld.so.conf.d/yara.conf
 
 USER nonroot
 RUN mkdir -pv /home/nonroot/workdir && \
