@@ -1,3 +1,7 @@
+01/09/2016
+----------
+* Docker image updated (thanks wzod!)
+
 01/08/2016
 ----------
 
@@ -50,6 +54,8 @@
  * ft_rtf.yara
  * ft_tar.yara
  * misc_pe_signature.yara
+
+* Docker image updated (thanks wzod!)
 
 11/09/2015
 ----------
