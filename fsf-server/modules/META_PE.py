@@ -5,7 +5,7 @@
 # Description: Extract metadata associated with executable filetypes
 # Date: 01/02/2015
 '''
-   Copyright 2015 Emerson Electric Co.
+   Copyright 2016 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -216,12 +216,15 @@ def META_PE(s, buff):
                          ('CRC', get_crc(pe)),
                         ('Compiled', '%s UTC' % time.asctime(time.gmtime(pe.FILE_HEADER.TimeDateStamp))),
                         ('Architecture', get_machine(pe)),
+                        ('EntryPoint', hex(pe.OPTIONAL_HEADER.AddressOfEntryPoint)),
+                        ('ImageBase', hex(pe.OPTIONAL_HEADER.ImageBase)),
                         ('Characteristics', get_dllcharacteristics(pe)),
                         ('Sections', get_sections(pe)),
                         ('Resource Names', get_resource_names(pe)),
                         ('Resource Types', get_resource_types(pe)),
                         ('Exports', get_exports(pe)),
                         ('Imports', get_imports(pe)),
+                        ('Import Hash', pe.get_imphash()),
                         ('StringFileInfo', get_stringfileinfo(pe))])
 
    return META_PE

@@ -1,3 +1,23 @@
+01/08/2016
+----------
+
+* Updated installation docs to include cabextract and latest pefile module
+
+* Added new module:
+	* EXTRACT_CAB - Extract contents and metadata of MS CAB files. Requires installation of cabextract utility
+
+* Improved some modules:
+	* META_PE - Now includes metadata for the entry point, image base, and import hash. Requires latest pefile module (>= 1.2.10-139)
+	* META_BASIC_INFO - Made this an ordered dictionary for display reasons
+
+* Core changes to address some minor bugs.
+	* Added server side timeout condition in off chance where client terminates connection mid transfer
+	* Added small sanity check to verify input is from a true FSF client 
+
+* Added new Yara signatures:
+	* ft_cab.yara
+	* ft_jar.yara
+
 11/23/2015
 ----------
 

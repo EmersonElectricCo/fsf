@@ -4,9 +4,9 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 10/30/2015
+# 12/30/2015
 '''
-   Copyright 2015 Emerson Electric Co.
+   Copyright 2016 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ class FSFClient:
 
       sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       msg = '%sFSF_RPC%sFSF_RPC%sFSF_RPC%s' % (self.filename, self.not_interactive, self.full, self.file)
-      buffer = struct.pack('>I', len(msg)) + msg
+      buffer = struct.pack('>I', len(msg)) + 'FSF_RPC' + msg
 
       try:
          sock.connect((self.host, self.port))

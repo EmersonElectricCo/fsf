@@ -1,12 +1,12 @@
 #!/usr/bin/python
 #
-# Listen, accept, and queue incomming files.
+# Listen, accept, and disposition incomming files.
 #
 # Jason Batchelor
 # Emerson Corporation
-# 10/30/2015
+# 12/30/2015
 '''
-   Copyright 2015 Emerson Electric Co.
+   Copyright 2016 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -56,15 +56,25 @@ class ForkingTCPRequestHandler(SocketServer.BaseRequestHandler):
       s.initialize_logger()
       s.check_yara_file()
 
+      # Check in case client terminates connection mid xfer
+      self.request.settimeout(10.0)
+
       try:
          raw_msg_len = self.request.recv(4)
          msg_len = struct.unpack('>I', raw_msg_len)[0]
          data = ''
 
-         while len(data) < msg_len:      
+         # Basic client request integrity check, not fullproof
+         proto_check = self.request.recv(7)
+         if proto_check != 'FSF_RPC':
+            s.dbg_h.error('%s Client request integrity check failed. Invalid FSF protocol used.' % dt.now())
+            raise ValueError()
+
+         while len(data) < msg_len:
             recv_buff = self.request.recv(msg_len - len(data))
             data += recv_buff
 
+         self.request.settimeout(None)
          self.process_data(data, s)
    
       except:
