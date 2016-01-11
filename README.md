@@ -58,6 +58,19 @@ Some key advantages to Bro integration are:
  * Limit the size of the file you extracting if desired
  * Control over MIME types you care to pass on to FSF
 
+###What if I want to do load balancing across several FSF servers?###
+
+You can easily integrate different load balancing solutions with FSF if you wish. Doing so, combined with the servers parallel processing for each request has many performance and reliability benefits. It also gives you the flexibility to do load balancing the way you want to, like using equal distribution, grouping, fail over, some combination and more...
+
+For example, you can use the popular utility [Balance](https://www.inlab.de/balance.html) to configure simple load balancing between FSF nodes with one simple command.
+
+`balance -f 5800 10.0.3.5 10.0.3.6`
+
+The above tells balance to run in the foreground on port 5800, and equally distribute requests between the two hosts specified (10.0.3.5 and 10.0.3.6). By default, the requests will be forwarded on port 5800 as well unless otherwise specified. Now we can just point our FSF clients to our load balancer and let it do the work for us.
+
+Of course, you can use a different load balancing solution you'd like, this is just a quick example. You can even specify multiple FSF servers/balancers using the client config file if desired. When doing this, the FSF server chosen for the request is done at random allowing for some rudimentary balancing.
+
+
 ###How can I get access to the subobjects that are recursively processed?###
 
 Ah, so are you tired of using `hachoir-subfile` + `dd` to carve out files during static analysis? Or perhaps running `unzip` or `unrar` to get decompressed files, `upx -d` to get unpacked files, or `OfficeMalScan` to get macros over and over is getting old? 
