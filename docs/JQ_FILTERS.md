@@ -43,9 +43,9 @@ Jq filters designed to analyze FSF data __MUST__ return a boolean result. Testin
 
 * Add your jq script to the _jq_ directory within the fsf-server folder.
 * Add an tuple entry to the _disposition.py_ list entitled _post_processor_.
-** First element is your jq signature name.
-** Second is the observation you want to capture.
-** Last is whether or not you want to set the alert flag based on the observation. 
+ * First element is your jq signature name.
+ * Second is the observation you want to capture.
+ * Last is whether or not you want to set the alert flag based on the observation. 
 
 The following is an example of what this would look like within the ''disposition.py'' file:
 
