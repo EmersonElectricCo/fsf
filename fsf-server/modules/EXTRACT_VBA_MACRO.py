@@ -2,9 +2,9 @@
 #
 # Author: Jason Batchelor
 # Description: Extract metadata for Office documents
-# Date: 08/26/2015
+# Date: 02/01/2016
 '''
-   Copyright 2015 Emerson Electric Co.
+   Copyright 2016 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 '''
-
 import sys
 import itertools
 import operator
@@ -62,7 +61,7 @@ def EXTRACT_VBA_MACRO(s, buff):
    for (filename, stream_path, vba_filename, vba_code) in vba.extract_macros():
 
       CHILD_MACRO = OrderedDict([('OLE Stream', stream_path),
-                                 ('VBA Filename', vba_filename),
+                                 ('VBA Filename', vba_filename.decode('ascii', 'ignore')),
                                  ('Scan', scan_macro(vba_code)),
                                  ('Buffer', vba_code)])
 

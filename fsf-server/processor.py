@@ -5,9 +5,9 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 10/30/2015
+# 02/01/2016
 '''
-   Copyright 2015 Emerson Electric Co.
+   Copyright 2016 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,13 +21,15 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 '''
-
 import sys
 import os
 import logging
 import signal
+import json
 from datetime import datetime as dt
 from collections import OrderedDict
+from distutils.spawn import find_executable
+from subprocess import Popen, PIPE, STDOUT
 # Ensure concurrent logging
 from cloghandler import ConcurrentRotatingFileHandler
 # Configurations
@@ -135,9 +137,38 @@ def archive(s):
    except:
       s.dbg_h.error('%s There was an error writing to the export directory. Error: %s' % (dt.now(), e))
 
-# Result: Process object and subjects, pass dictionary back
-def scan_file(s):
+# Result: Return post processing observations back
+def post_processor(s, report):
 
+   observations = []
+
+   jq_location = find_executable('jq')
+   if jq_location == None:
+      s.dbg_h.error('%s Unable to find JQ, aborting post-processing routine...' % dt.now())
+      return
+
+   for script, observation, alert in disposition.post_processor:
+      args = [jq_location, '-f', '%s/%s/%s' % (os.path.dirname(os.path.realpath(__file__)), 'jq', script)]
+      proc = Popen(args, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+      results = proc.communicate(input=json.dumps(report))[0].split('\n')
+
+      if proc.returncode:
+         s.dbg_h.error('%s There was a problem executing the JSON interpreter...' % dt.now())
+         return
+
+      for r in results:
+         if r == 'true':
+            observations.append(observation)
+            # Allow ourselves to alert on certain observations
+            if alert:
+               s.alert = True
+
+            break
+
+   return observations
+
+# Result: Process object and sub objects, review results, pass dictionary back
+def scan_file(s):
    # Scan and process the results
    root_dict = OrderedDict([('Scan Time', '%s' % dt.now()),
                             ('Filename', s.filename),
@@ -148,14 +179,17 @@ def scan_file(s):
    else:
       root_dict['Interactive'] = True
 
+   root_dict['Summary'] = { 'Modules' : sorted(set(MODULES_RUN)),
+                            'Yara' : sorted(set(YARA_RULES)) }
+
+   # Allow post processor to add observations on output
+   root_dict['Summary']['Observations'] = post_processor(s, root_dict)
+
    if s.alert:
       root_dict['Alert'] = True
       if s.not_interactive == 'True':
          archive(s)
    else:
       root_dict['Alert'] = False
-
-   root_dict['Summary'] = { 'Modules' : sorted(set(MODULES_RUN)),
-                            'Yara' : sorted(set(YARA_RULES)) }
 
    return root_dict

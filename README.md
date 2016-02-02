@@ -29,9 +29,15 @@ This decision is left up to you since there are many ways to do this. One sugges
 
 This is precisely what modules are for! Module development driven by analyst observations is a cornerstone of the FSF!
 
-###This is pretty cool – but I don’t really know that much about Yara?###
+###What if I want to capture high level observations and even detect on relationships between files that FSF exposes?###
 
-Check out the [Yara official documentation](http://yara.readthedocs.org/) for more information and examples.
+This is all done via a post-processing feature that is driven in large part by jq (a JSON interpreter). To learn more about how to write jq filters that work with the FSF post-processor, check out [docs/jq_filters.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_FILTERS.md).
+
+###This is pretty cool – but I don’t really know that much about Yara or jq?###
+
+Check out the [Yara official documentation](http://yara.readthedocs.org/) for more information and examples for Yara.
+
+The official [jq](https://stedolan.github.io/jq/) website contains great tutorials and documentation as well.
 
 ###What are the tools limitations?###
 
@@ -93,7 +99,9 @@ Each object within this file represents an opportunity to collect/enrich intelli
 
 ###There's a lot of JSON output here... What tools exist to help me interact with this data effectively over the command line?###
 
-[JQ](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/JQ_Examples.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_Examples.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [JQ Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
+[Jq](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/jq_examples.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_EXAMPLES.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [jq Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
+
+Finally, don't be afraid to check out some of the jq filters we've open sourced as part of the post-processing feature!
 
 Installation
 ------------

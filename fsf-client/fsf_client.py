@@ -4,7 +4,7 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 12/30/2015
+# 02/01/2016
 '''
    Copyright 2016 Emerson Electric Co.
 
@@ -98,15 +98,15 @@ class FSFClient:
             self.dump_subobjects(sock, dirname)
 
       except:
-        e = sys.exc_info()[0]
-        error = '%s There was a problem getting data for %s from %s on port %s. Error: %s' % (dt.now(), self.filename, self.host, self.port, e)
-        if self.not_interactive:
-           with open(self.logfile, 'a') as f:
-              f.write(error)
-              f.close()
-        else:
-           print error
-
+         e = sys.exc_info()[0]
+         error = '%s There was a problem getting data for %s from %s on port %s. Error: %s' % (dt.now(), self.filename, self.host, self.port, e)
+         if self.not_interactive:
+            with open(self.logfile, 'a') as f:
+               f.write(error)
+               f.close()
+         else:
+            print error
+         
    # Dump all subobjects returned by the scanner server
    def dump_subobjects(self, sock, dirname):
 
