@@ -80,16 +80,25 @@ RUN cd /tmp && \
   cd yara-python/ && \
   python setup.py build && \
   python setup.py install && \
+  cd /tmp && \
 
 # Retrieve current version of pefile via wget, verify known good hash and install pefile
-  wget -O pefile-1.2.10-139.zip "https://github.com/erocarrera/pefile/archive/master.zip" && \
-  echo 6362f500afa3505d4ef92c03639af18abb43996491b2eb67295036c15e57f5d8\ \ pefile-1.2.10-139.zip > sha256sum-pefile && \
+  wget -O pefile-1.2.10-139.tar.gz "http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz" && \
+  echo 8b7c5d853c97a923d0f6e128d0ae76b962aa75fd608d552f5a32e46276908a16\ \ pefile-1.2.10-139.tar.gz > sha256sum-pefile && \
   sha256sum -c sha256sum-pefile && \
 
-  unzip pefile-1.2.10-139.zip && \
-  cd pefile-master && \
+  tar vxzf pefile-1.2.10-139.tar.gz && \
+  cd pefile-1.2.10-139 && \
   python setup.py build && \
-  python setup.py install
+  python setup.py install && \
+  cd /tmp && \
+
+# Retrieve current version of jq via wget, verify known good hash and move to /usr/local/bin
+  wget -O jq "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64" && \
+  echo c6b3a7d7d3e7b70c6f51b706a3b90bd01833846c54d32ca32f0027f00226ff6d\ \ jq > sha256sum-jq && \
+  sha256sum -c sha256sum-jq && \
+  chmod 755 jq && \
+  mv jq /usr/local/bin/
 
 # Install additional dependencies
 RUN pip install czipfile \
@@ -105,7 +114,10 @@ RUN pip install czipfile \
   pylzma \
   oletools \
   pyasn1_modules \ 
-  pyasn1 && \
+  pyasn1 \
+  pyelftools \
+  javatools \
+  requests && \
 
   BUILD_LIB=1 pip install ssdeep
 
@@ -121,7 +133,7 @@ RUN mkdir -pv /home/nonroot/workdir && \
   cd /home/nonroot && \
   git clone https://github.com/EmersonElectricCo/fsf.git && \
   cd fsf/ && \
-  sed -i 's/\/FULL\/PATH\/TO/\/home\/nonroot\/fsf/' fsf-server/conf/config.py && \
+  sed -i 's/\/FULL\/PATH\/TO/\/home\/nonroot/' fsf-server/conf/config.py && \
   sed -i "/^SCANNER\_CONFIG/ s/\/tmp/\/home\/nonroot\/workdir/" fsf-server/conf/config.py 
   
 USER root
