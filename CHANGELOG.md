@@ -1,3 +1,7 @@
+02/03/2016
+----------
+* Docker image updated (thanks wzod!)
+
 02/01/2016
 ----------
 
@@ -11,6 +15,7 @@
 
 * Introduced the addition of report post processing capability using jq filters!
 	* Observations informed by jq filters are now added to the FSF report summary.
+	* Check out the [documentation](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_FILTERS.md)
 
 * Added new modules:
 	* META_ELF - Extract metadata contents inside ELF files
