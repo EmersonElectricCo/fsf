@@ -29,9 +29,15 @@ This decision is left up to you since there are many ways to do this. One sugges
 
 This is precisely what modules are for! Module development driven by analyst observations is a cornerstone of the FSF!
 
-###This is pretty cool – but I don’t really know that much about Yara?###
+###What if I want to capture high level observations and even detect on relationships between files that FSF exposes?###
 
-Check out the [Yara official documentation](http://yara.readthedocs.org/) for more information and examples.
+This is all done via a post-processing feature that is driven in large part by jq (a JSON interpreter). To learn more about how to write jq filters that work with the FSF post-processor, check out [docs/jq_filters.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_FILTERS.md).
+
+###This is pretty cool – but I don’t really know that much about Yara or jq?###
+
+Check out the [Yara official documentation](http://yara.readthedocs.org/) for more information and examples for Yara.
+
+The official [jq](https://stedolan.github.io/jq/) website contains great tutorials and documentation as well.
 
 ###What are the tools limitations?###
 
@@ -58,6 +64,19 @@ Some key advantages to Bro integration are:
  * Limit the size of the file you extracting if desired
  * Control over MIME types you care to pass on to FSF
 
+###What if I want to do load balancing across several FSF servers?###
+
+You can easily integrate different load balancing solutions with FSF if you wish. Doing so, combined with the servers parallel processing for each request has many performance and reliability benefits. It also gives you the flexibility to do load balancing the way you want to, like using equal distribution, grouping, fail over, some combination and more...
+
+For example, you can use the popular utility [Balance](https://www.inlab.de/balance.html) to configure simple load balancing between FSF nodes with one simple command.
+
+`balance -f 5800 10.0.3.5 10.0.3.6`
+
+The above tells balance to run in the foreground on port 5800, and equally distribute requests between the two hosts specified (10.0.3.5 and 10.0.3.6). By default, the requests will be forwarded on port 5800 as well unless otherwise specified. Now we can just point our FSF clients to our load balancer and let it do the work for us.
+
+Of course, you can use a different load balancing solution you'd like, this is just a quick example. You can even specify multiple FSF servers/balancers using the client config file if desired. When doing this, the FSF server chosen for the request is done at random allowing for some rudimentary balancing.
+
+
 ###How can I get access to the subobjects that are recursively processed?###
 
 Ah, so are you tired of using `hachoir-subfile` + `dd` to carve out files during static analysis? Or perhaps running `unzip` or `unrar` to get decompressed files, `upx -d` to get unpacked files, or `OfficeMalScan` to get macros over and over is getting old? 
@@ -80,7 +99,9 @@ Each object within this file represents an opportunity to collect/enrich intelli
 
 ###There's a lot of JSON output here... What tools exist to help me interact with this data effectively over the command line?###
 
-[JQ](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/JQ_Examples.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_Examples.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [JQ Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
+[Jq](https://stedolan.github.io/jq/) is a great utility to help work with JSON data. You might find yourself wanting to filter out certain modules when reviewing FSF JSON output for intel gain. Please refer to the [docs/jq_examples.md](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_EXAMPLES.md), for some helpful 'FSF specific' examples to accommodate such inquiries. I'd also suggest taking a peek at the [jq Cookbook](https://github.com/stedolan/jq/wiki/Cookbook) for more great examples.
+
+Finally, don't be afraid to check out some of the jq filters we've open sourced as part of the post-processing feature!
 
 Installation
 ------------

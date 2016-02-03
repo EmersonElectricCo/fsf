@@ -1,3 +1,49 @@
+02/01/2016
+----------
+
+* Updated documentation:
+	* README update to include post-processing capability
+	* Added documentation on incorporating jq filters for post-processing (JQ_FILTERS.md)
+	* Updated FSF process diagram
+	* Updated install documents to include new requirements:
+		* Python modules: pyelftools, javatools, requests
+		* Tools: jq
+
+* Introduced the addition of report post processing capability using jq filters!
+	* Observations informed by jq filters are now added to the FSF report summary.
+
+* Added new modules:
+	* META_ELF - Extract metadata contents inside ELF files
+	* META_JAVA_CLASS - Expose requirements, capabilities, and other metadata inside Java class files
+	* META_VT_INSPECT - Query VT for AV assessment on various files (public/private API key required)
+
+* Bug fixes:
+	* Spacing issue with a few lines in fsf_client.py
+	* UnicodeDecodeError with some kinds of macro files, adjusted EXTRACT_VBA_MACRO to accommodate
+
+* Added some starter jq filters:
+	* embedded_sfx_rar_w_exe.jq  
+	* macro_gt_five_suspicious.jq  
+	* no_yara_hits.jq          
+	* vt_broadbased_detections_found.jq  
+	* vt_match_not_found.jq
+	* exe_in_zip.jq              
+	* many_objects.jq              
+	* one_module.jq            
+	* vt_exploit_detections_found.jq
+	* fresh_vt_scan.jq           
+	* more_than_ten_yara.jq        
+	* pe_recently_compiled.jq  
+	* vt_match_found.jq
+
+* Added new Yara signatures:
+	* ft_elf.yara
+	* ft_java_class.yara
+
+01/09/2016
+----------
+* Docker image updated (thanks wzod!)
+
 01/08/2016
 ----------
 
@@ -36,20 +82,22 @@
  * EXTRACT_ZIP - More generous on corrupt ZIP files. It will now process embedded archives the best it can, if one is corrupt, it will move to the next instead of failing entirely
  * EXTRACT_RAR - Removed StringIO module in imports, was unnecessary
 
-* Added a section on JQ tippers for help interacting FSF JSON output in docs
+* Added a section on jq tippers for help interacting FSF JSON output in docs
  * Filter out multiple nodes from JSON output
  * Show results from only one module
- * Contribute your own creative JQ-fu!
+ * Contribute your own creative jq-fu!
 
 * Updated Test.json to accommodate output from module additions
 
-* Updated README.md with notes on JQ use with FSF data
+* Updated README.md with notes on jq use with FSF data
 
 * Added new Yara signatures:
  * ft_gzip.yara
  * ft_rtf.yara
  * ft_tar.yara
  * misc_pe_signature.yara
+
+* Docker image updated (thanks wzod!)
 
 11/09/2015
 ----------

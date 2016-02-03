@@ -61,6 +61,15 @@ Reload necessary libraries.
 
 `sudo ldconfig`
 
+Installing JQ
+-------------
+Get the latest JQ package, set the right perms and move it to a known path:
+```
+wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
+chmod 755 jq
+sudo mv jq /usr/local/bin/
+```
+
 Python Modules
 --------------
 
@@ -68,9 +77,17 @@ Install the following Python modules using `pip`.
 
 ```
 sudo easy_install -U setuptools
-sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1
+sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests
 ```
-NOTE: Ensure pefile is at least version pefile-1.2.10-139. On some distros a latter version is installed which means you will need to build from source.
+NOTE: Ensure pefile is at least version pefile-1.2.10-139. On some distros a latter version is installed which means you will need to build from source. To do this, simply follow the instructions below...
+
+```
+wget http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz
+tar -xvzf pefile-1.2.10-139.tar.gz
+cd pefile-1.2.10-139
+python setup.py build
+sudo python setup.py install
+```
 
 Install FSF
 ------------
@@ -116,3 +133,24 @@ You should get a bunch of pretty JSON and a dump of subobjects if you use `--ful
 Problems? Check out `/tmp/daemon.log` and or `/tmp/dbg.log`.
 
 Success? Awesome! If you have any ideas or desire to contribute modules or Yara signatures please share them!
+
+Extra Stuff
+-----------
+
+Users scanning at a large scale will likely want to have some level of log rotation baked into the deployment. Below is a simple example using logrotate.
+
+Create the following file _/etc/logrotate.d/scanner_ and put have the following configuration options...
+
+```
+compress
+copytruncate
+ 
+/YOUR/LOG/PATH/*.log {
+        weekly
+        create 0664 YOUR_USER YOUR_GROUP
+        rotate 5
+}
+```
+The above will compress log files on a weekly basis in your directory. It will assign the permissions to the user and group you supply and logs will rotate off after five weeks. The _copytruncate_ option is important to ensure logs like _daemon.log_ will continue logging data after it is rotated.
+
+

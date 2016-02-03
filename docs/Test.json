@@ -1,6 +1,6 @@
 {
-    "Scan Time": "2015-11-21 02:54:15.893807", 
-    "Filename": "test.zip", 
+    "Scan Time": "2016-02-01 21:37:52.599837", 
+    "Filename": "Test.zip", 
     "Object": {
         "META_BASIC_INFO": {
             "MD5": "f77489b604a106a0e0cd715d84a975a4", 
@@ -876,7 +876,6 @@
         }
     }, 
     "Interactive": true, 
-    "Alert": false, 
     "Summary": {
         "Yara": [
             "compressed_exe_in_rar", 
@@ -898,6 +897,12 @@
             "META_PDF", 
             "META_PE", 
             "SCAN_YARA"
+        ], 
+        "Observations": [
+            "An executable was found inside a ZIP file.", 
+            "An embedded file contained a self-extracting RAR that itself contained an executable payload.", 
+            "More than 10 unique objects were observed in this file."
         ]
-    }
+    }, 
+    "Alert": false
 }
