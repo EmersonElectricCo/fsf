@@ -112,7 +112,9 @@ Of course, you can use a different load balancing solution you'd like, this is j
 
 Ah, so are you tired of using `hachoir-subfile` + `dd` to carve out files during static analysis? Or perhaps running `unzip` or `unrar` to get decompressed files, `upx -d` to get unpacked files, or `OfficeMalScan` to get macros over and over is getting old? 
 
-Well you can certainly use FSF to do the heavy lifting if you'd like. It incorporates the components that make the above tools so helpful into the framework. For other use cases, all you you need is to ensure the intelligence to do what you want is built into the framework (Yara + Module)! Several open source modules included with the package help with this. Just use the --full option when invoking the client and all the subobjects will collect in a new directory.
+Well you can certainly use FSF to do the heavy lifting if you'd like. It incorporates the components that make the above tools so helpful into the framework. For other use cases, all you you need is to ensure the intelligence to do what you want is built into the framework (Yara + Module)! Several open source modules included with the package help with this. 
+
+To support analysts submitting files using the client, the --full option will return all the subobjects collected in a new directory.
 
 Word of caution however, make sure you understand how to do it the hard way first!
 
@@ -121,6 +123,8 @@ fsf_client.py macro_test --full
 ...normal report information...
 Subobjects of macro_test successfully written to: fsf_dump_1446676465_6ba593d8d5defd6fbaa96a1ef2bc601d
 ```
+
+If you want to collect sub objects on a grander scale server-side, look into the --archive command. You have five choices that are built-in which allow you to determine how aggressively you want to capture extracted data.
 
 ###Okay I think I understand, but I'd like visual representation on what a 'report' looks like?###
 
