@@ -15,11 +15,7 @@ The following is a bulleted list of important files within the framework and the
 * `conf/disposition.py` - Configuration file used to define any actions that should be taken on files being processed. Drives alerting decisions on files that match Yara signatures and defines module(s) to run as a result of a signature hit.
 * `modules/` - Add your modules here to incorporate them into the framework by editing the `__init__.py` file. Ensure your module is in the _modules_ directory.
 
-The scanner can be invoked in two modes 
-
-* _Not-interactive mode_ - Not running in interactive mode will cause results to be logged passively to the server only. The data sent will also be __REMOVED__ from the client after it is sent. Only files that meet archival criteria will be saved on the server in the configured export directory. This mode is generally used for automated file extraction operations, not analyst interaction.
-* _Interactive mode_ - This is the default mode, primarily used for analyst interaction. Results are displayed to the analyst and are also logged on the server in the configured location. Files sent are not deleted off the system and are not able to be alerted on. This makes the most sense, as analysts will be scanning known malware specimens that do not require an alert.
- * _Full_ - Dump all subobjects of submitted file to current directory. Format or directory name is `fsf_dump_[epoch time]_[md5 hash of scan results]`. Currently only supported in interactive mode (default). 
+The scanner can be invoked using a variety of different options. By default they accommodate submissions by an analyst. However, they can be easily tuned to support larger operations; such as that of a sensor grid, or others...
 
 Module Overview
 ------------
@@ -38,9 +34,11 @@ There is a `modules/template.py` file in the modules directory that is a simple 
 ###Scanner Object###
 
 Modules are granted access to a scanner object which has the following attributes:
-* Filename - (String) - name of the initial file being analyzed
-* Not interactive - (Boolean) Value that states how server was invoked
-* File - (List) - buffer of initial file being analyzed
+* Filename - (String) - Name of the initial file being analyzed
+* Source - (String) - Name given to the submission source (analyst by default)
+* Archive - (String) - Archival criteria sent from the submitter
+* Suppress report - (Boolean) - Indicates whether client expects a report sent back
+* File - (List) - Buffer of initial file being analyzed
 * Yara Rule Path - (String) - Path to central yara file with all includes
 * Export Path - (String) - Where files should be written to
 * Log Path - (String) - Where logs should be written to
@@ -48,9 +46,9 @@ Modules are granted access to a scanner object which has the following attribute
 * Debug Log - (Logger Object) - Writing to debug logger file
 * Scan Log - (Logger Object) - Writing to scan logger file
 * Timeout - (Int) - How long each module has before it is forced to exit
-* Alert - (Boolean) - Value sets the alert key 
+* Alert - (Boolean) - Value sets the alert key
 * Full - (Boolean) - Value too see if user wants all subobjects
-* Subobjects - (List) - Storage for different subobjects returned from modules
+* Sub objects - (List) - Storage for different subobjects returned from modules
 
 ###File Recursion###
 
@@ -154,6 +152,7 @@ Next, move over to the fsf-client and ensure the `conf/config.py` file is pointi
  ./fsf_client.py test_file
  {
      "Scan Time": "2015-07-29 12:38:18.095262",
+     "Source": "Analyst",
      "Filename": "test_file",
      "Object": {
          "META_BASIC_INFO": {
@@ -186,7 +185,8 @@ Next, move over to the fsf-client and ensure the `conf/config.py` file is pointi
              "META_BASIC_INFO",
              "META_TEST_DECODE",
              "SCAN_YARA"
-         ]
+         ],
+         "Observations": [],
      }
  }
 ```
@@ -248,8 +248,8 @@ The following Bro script was compiled and tested with Bro 2.4. After simply addi
  {
          if ( f$info?$extracted )
          {
-                 # Invoke the scanner in not interactive mode. Files will be deleted off client once sent, this is a fail open operation
-                 local scan_cmd = fmt("%s %s/%s", "PATH/fsf_client.py --not-interactive", FileExtract::prefix, f$info$extracted);
+                 # Invoke the scanner using the pre-defined options. Files will be deleted off client once sent, this is a fail open operation
+                 local scan_cmd = fmt("%s %s/%s", "PATH/fsf_client.py --delete --source EVision --suppress-report --archive all-on-alert", FileExtract::prefix, f$info$extracted);
                  system(scan_cmd);
          }
  }

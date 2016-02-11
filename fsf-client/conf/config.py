@@ -9,5 +9,5 @@
 SERVER_CONFIG = { 'IP_ADDRESS' : ['127.0.0.1',],
                   'PORT' : 5800 }
 
-# Full path to debug file if run in --not-interactive mode
+# Full path to debug file if run with --suppress-report
 CLIENT_CONFIG = { 'LOG_FILE' : '/tmp/client_dbg.log' }

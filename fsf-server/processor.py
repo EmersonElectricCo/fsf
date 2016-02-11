@@ -5,7 +5,7 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 02/01/2016
+# 02/09/2016
 '''
    Copyright 2016 Emerson Electric Co.
 
@@ -21,11 +21,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 '''
+
 import sys
 import os
 import logging
 import signal
 import json
+import time
+import hashlib
 from datetime import datetime as dt
 from collections import OrderedDict
 from distutils.spawn import find_executable
@@ -46,6 +49,9 @@ MODULES_RUN = []
 # List of Yara rules that fired - used in summary generation
 YARA_RULES = []
 
+# Determine if we need to save sub object buffers
+SUB_TRACKER = False
+
 # Result: Recurse through dictionary to identify and process returned buffers.
 # When complete, we update the dictionary with new module information and remove the buffer. 
 def recurse_dictionary(s, myDict):
@@ -57,7 +63,7 @@ def recurse_dictionary(s, myDict):
          # Process any new buffers from a module 
          myDict.update(process_buffer(s, value))
          # Keep track of sub objects if client wants them
-         if s.full == 'True':
+         if SUB_TRACKER:
             s.sub_objects.append(value)
          # We don't care to display/log the buffer after processing
          del myDict[key]
@@ -128,15 +134,6 @@ def process_buffer(s, buff):
 
    return myDict
 
-# Result: copy file to the export directory for signature hits
-def archive(s):
-   try:
-      f = open("%s/%s" % (s.export_path, s.filename), 'w+')
-      f.write(s.file)
-      f.close()
-   except:
-      s.dbg_h.error('%s There was an error writing to the export directory. Error: %s' % (dt.now(), e))
-
 # Result: Return post processing observations back
 def post_processor(s, report):
 
@@ -167,17 +164,61 @@ def post_processor(s, report):
 
    return observations
 
+# Result: copy file, return export path to user
+def archive_file(s):
+
+   path = '%s/%s' % (s.export_path, s.filename)
+
+   try:
+      with open(path, 'w') as f:
+         f.write(s.file)
+         f.close()
+   except:
+      s.dbg_h.error('%s There was an error writing to the export directory. Error: %s' % (dt.now(), e))
+
+   return path
+
+# Result: archive file and associated sub objects, return export path to user
+def archive_all(s, report):
+
+   report_dump = json.dumps(report)
+   # Generate dirname by calculating epoch time and hash of results
+   dirname = '%s/fsf_dump_%s_%s' % (s.export_path, int(time.time()), hashlib.md5(report_dump).hexdigest())
+
+   os.mkdir(dirname)
+   
+   try:
+      # Archive the base file
+      with open ('%s/%s' % (dirname, s.filename), 'w') as f:
+         f.write(s.file)
+         f.close()
+
+      # Archive all sub objects
+      for data in s.sub_objects:
+         fname = hashlib.md5(data).hexdigest()
+         with open('%s/%s' % (dirname, fname), 'w') as f:
+            f.write(data)
+            f.close
+   except:
+      s.dbg_h.error('%s There was an error writing to the export directory. Error: %s' % (dt.now(), e))
+
+   return dirname
+
 # Result: Process object and sub objects, review results, pass dictionary back
 def scan_file(s):
+
+   # Determine if we need to save sub object buffers
+   if s.full == 'True' or \
+   s.archive == 'all-the-things' or \
+   s.archive == 'all-on-alert':
+      global SUB_TRACKER 
+      SUB_TRACKER = True
+
    # Scan and process the results
    root_dict = OrderedDict([('Scan Time', '%s' % dt.now()),
                             ('Filename', s.filename),
+                            ('Source', s.source),
                             ('Object', process_buffer(s, s.file))])
-
-   if s.not_interactive == 'True':
-      root_dict['Interactive'] = False
-   else:
-      root_dict['Interactive'] = True
 
    root_dict['Summary'] = { 'Modules' : sorted(set(MODULES_RUN)),
                             'Yara' : sorted(set(YARA_RULES)) }
@@ -187,9 +228,21 @@ def scan_file(s):
 
    if s.alert:
       root_dict['Alert'] = True
-      if s.not_interactive == 'True':
-         archive(s)
+      # Archive file on alert
+      if s.archive == 'file-on-alert':
+         root_dict['Export'] = archive_file(s)
+      # Archive file and sub objects on alert
+      if s.archive == 'all-on-alert':
+         root_dict['Export'] = archive_all(s, root_dict)
    else:
       root_dict['Alert'] = False
+
+   # Archive all the files, regardless of alert status
+   if s.archive == 'all-the-files':
+      root_dict['Export'] = archive_file(s)   
+
+   # Archive all the things, regardless of alert status
+   if s.archive == 'all-the-things':
+      root_dict['Export'] = archive_all(s, root_dict)
 
    return root_dict

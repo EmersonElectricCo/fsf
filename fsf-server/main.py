@@ -4,7 +4,7 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 12/30/2015
+# 02/06/2016
 '''
    Copyright 2016 Emerson Electric Co.
 
@@ -86,10 +86,10 @@ class ForkingTCPRequestHandler(SocketServer.BaseRequestHandler):
    def process_data(self, data, s):
       # Get data for initial report generation
       try:
-         s.filename, s.not_interactive, s.full, s.file = data.split('FSF_RPC')
+         s.filename, s.source, s.archive, s.suppress_report, s.full, s.file = data.split('FSF_RPC')
          results = s.scan_file()
 
-         if s.not_interactive == 'True':
+         if s.suppress_report == 'True':
             s.scan_h.info(json.dumps(results, sort_keys=False))
          else:
             s.scan_h.info(json.dumps(results, sort_keys=False))
