@@ -16,7 +16,7 @@ sudo apt-get install autoconf dh-autoreconf python-dev libpython2.7-stdlib pytho
 
 ###CentOS###
 
-`sudo yum install autoconf python-devel automake wget vim libtool openssl openssl-devel net-tools cabextract`
+`sudo yum install autoconf python-devel automake wget vim libtool openssl openssl-devel net-tools`
 
 Turn on EPEL repo.
 
@@ -29,7 +29,7 @@ rpm -Uvh rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
 ```
 Get remaining packages.
 
-`sudo yum install python-argparse python-pip ssdeep-devel libffi-devel unrar upx unzip`
+`sudo yum install python-argparse python-pip ssdeep-devel libffi-devel unrar upx unzip cabextract`
 
 Installing Yara 
 ------------------
