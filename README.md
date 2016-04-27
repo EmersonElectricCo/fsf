@@ -8,10 +8,10 @@ Introduction
 
 Network defenders should be empowered to drive capabilities forward how they see fit. This is the philosophy upon which, FSF was designed.
 
-FSF is a modular solution that enables analysts to extend the utility of the Yara signatures they write and define actionable intelligence within a file. This is accomplished by recursively scanning a file and looking for opportunities to extract file objects using a combination of Yara signatures (to define opportunities) and programmable logic (to define what to do with the opportunity).
+FSF is a modular, recursive file scanning solution. FSF enables analysts to extend the utility of the Yara signatures they write and define actionable intelligence within a file. This is accomplished by recursively scanning a file and looking for opportunities to extract file objects using a combination of Yara signatures (to define opportunities) and programmable logic (to define what to do with the opportunity).
 The framework allows you to build out your intelligence capability by empowering you to apply observations wrought out of the analytical process…
 
-Okay that’s a mouthful – but think about it – if you see that some pattern (maybe a string or a byte sequence) that represents some concept or behavior; through the use of the framework, you are positioned to capture that observation and apply it to certain file types that meet your criteria.
+Okay that’s a mouthful – but think about it – if you see that some pattern (maybe a string or a byte sequence) that represents some concept or behavior; through the use of the framework, you are positioned to capture that observation and apply it to certain file types that meet your criteria. The goal being, to help extend the utility for observations from malware analysis and reverse engineering efforts.
 
 Some examples might be:
 * Uncompressing ZIP files and scanning their contents.
@@ -81,7 +81,8 @@ The table below provides this information:
 |EXTRACT_CAB|Uncompress MS CAB files.|
 |META_ELF|Expose metadata within ELF binaries.|
 |META_JAVA_CLASS|Expose requirements, capabilities, and other metadata inside Java class files.|
-|META_VT_INSPECT|Get VirusTotal info concerning a specific file MD5.|
+|META_VT_INSPECT|Get VirusTotal info concerning a specific file MD5. (Requires Public or Private API Key)|
+|EXTRACT_HEXASCII_PE|Get encoded PE elements out of files and convert to binary.|
 
 ###How does this scale up if I want to 'scan all the things'?###
 

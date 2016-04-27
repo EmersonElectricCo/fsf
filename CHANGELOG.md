@@ -1,3 +1,13 @@
+04/27/2016
+----------
+
+* Added new module:
+   * EXTRACT_HEXASCII_PE - Snag encoded PE files inside of files (example in source)
+
+* Added new Yara signatures:
+   * misc_hexascii_pe_in_html
+   * misc_no_dosmode_header
+
 02/11/2016
 ----------
 
