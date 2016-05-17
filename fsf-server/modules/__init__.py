@@ -18,4 +18,5 @@ __all__ = ['META_BASIC_INFO',
            'META_JAVA_CLASS',
            'META_ELF',
            'META_VT_INSPECT',
+	   'EXTRACT_HEXASCII_PE',
            ]
