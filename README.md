@@ -1,4 +1,4 @@
-File Scanning Framework (FSF) v1.0
+File Scanning Framework (FSF) v1.1
 ==============
 
 Introduction
