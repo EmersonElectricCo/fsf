@@ -2,7 +2,7 @@
 #
 # This is the Python 'module' that contains the 
 # disposition criteria for Yara and jq filters the scanner framework
-# will archive/work on. Each member is the name of a  
+# will work on. Each member is the name of a 
 # high fidelity detection.
 #
 # default - Modules that are always run on a returned buffer value
@@ -20,7 +20,7 @@ default = ['META_BASIC_INFO',
 
 # STRUCTURE: List of tuples such that...
 # Types:  [('string', 'list', boolean'), ...]
-# Variables: [('rule name', ['module_1' , 'module_2'] , 'is archivable'), ...]
+# Variables: [('rule name', ['module_1' , 'module_2'] , 'alert_flag'), ...]
 triggers = [('ft_zip', ['EXTRACT_ZIP'], False),
             ('ft_exe', ['META_PE'], False),
             ('ft_rar', ['EXTRACT_RAR'], False),
@@ -36,11 +36,13 @@ triggers = [('ft_zip', ['EXTRACT_ZIP'], False),
             ('ft_cab', ['EXTRACT_CAB'], False),
             ('ft_elf', ['META_ELF'], False),
             ('ft_java_class', ['META_JAVA_CLASS'], False),
+            ('misc_hexascii_pe_in_html', ['EXTRACT_HEXASCII_PE'], False),
+            ('misc_no_dosmode_header', '', False),
      ]
 
 # STRUCTURE: List of tuples such that...
 #  Types:      [('string', 'string', boolean'), ...]
-#  Variables:  [('jq script', 'observation' , 'is archivable'), ...]
+#  Variables:  [('jq script', 'observation' , 'alert_flag'), ...]
 post_processor = [('one_module.jq', 'Only one kind of module was run on for this report.', False),
                   ('no_yara_hits.jq', 'There doesn\'t appear to be any Yara signature hits for this scan.', False),
                   ('exe_in_zip.jq', 'An executable was found inside a ZIP file.', False),

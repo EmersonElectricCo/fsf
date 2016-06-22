@@ -4,9 +4,9 @@
 #
 # Jason Batchelor
 # Emerson Corporation
-# 10/30/2015
+# 02/10/2016
 '''
-   Copyright 2015 Emerson Electric Co.
+   Copyright 2016 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -34,7 +34,9 @@ class Scanner:
    def __init__(self):
 
       self.filename = ""
-      self.not_interactive = ""
+      self.source = ""
+      self.archive = ""
+      self.suppress_report = ""
       self.file = ""
       self.yara_rule_path = config.SCANNER_CONFIG['YARA_PATH']
       self.export_path = config.SCANNER_CONFIG['EXPORT_PATH']

@@ -1,3 +1,43 @@
+04/27/2016
+----------
+
+* Added new module:
+   * EXTRACT_HEXASCII_PE - Snag encoded PE files inside of files (example in source)
+
+* Added new Yara signatures:
+   * misc_hexascii_pe_in_html
+   * misc_no_dosmode_header
+
+02/11/2016
+----------
+
+* Formal 1.0 stable release :)
+
+* Removal of '--interactive' and '--not-interactive' modes from client/server
+
+* Introduction of new flags to the client to support more flexibility 
+	* Added '--source', to specify the source of the input. Useful when scaling up to larger operations or supporting multiple sources; such as integrating with a sensor grid or other network defense solutions. Defaults to 'Analyst' as submission source
+	* Added '--delete' to remove file from client after sent to FSF server. Data can be archived later on server depending on selected options
+	* Added '--archive' to specify how the file submission should be stored on the server (if at all)
+		* The most common option is 'none' which will tell the server not to archive for this submission (default)
+		* 'file-on-alert' will archive the file only if the alert flag is set
+		* 'all-on-alert' will archive the file and all sub objects if the alert flag is set
+		* 'all-the-files' will archive all the files sent to the scanner regardless of the alert flag
+		* 'all-the-things' will archive the file and all sub objects regardless of the alert flag
+	* Added '--suppress-report', don't return a JSON report back to the client and log client-side errors to the locally configured log directory. Choosing this will log scan results server-side only. Needed for automated scanning use cases when sending large amount of files for bulk collection. Set to false by default.
+
+* Updated documentation:
+	* New process flow diagram to reflect changes
+	* New overview picture to get rid of old 'interactive modes'
+	* Updated [modules](https://github.com/EmersonElectricCo/fsf/blob/master/docs/MODULES.md) to reflect removal of 'interactive' modes and addition of new flags
+	* Added a few usage notes to the readme based on the recent changes
+		* fsf_client -h output
+	* Added a module matrix to give an overview of capabilities
+
+02/03/2016
+----------
+* Docker image updated (thanks wzod!)
+
 02/01/2016
 ----------
 
@@ -10,7 +50,8 @@
 		* Tools: jq
 
 * Introduced the addition of report post processing capability using jq filters!
-	* Observations informed by jq filters are now added to the FSF report summary.
+	* Observations informed by jq filters are now added to the FSF report summary
+	* Check out the [documentation](https://github.com/EmersonElectricCo/fsf/blob/master/docs/JQ_FILTERS.md)
 
 * Added new modules:
 	* META_ELF - Extract metadata contents inside ELF files

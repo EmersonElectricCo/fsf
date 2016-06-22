@@ -1,6 +1,7 @@
 {
-    "Scan Time": "2016-02-01 21:37:52.599837", 
-    "Filename": "Test.zip", 
+    "Scan Time": "2016-02-10 20:14:41.229920", 
+    "Filename": "test.zip", 
+    "Source": "Analyst", 
     "Object": {
         "META_BASIC_INFO": {
             "MD5": "f77489b604a106a0e0cd715d84a975a4", 
@@ -875,7 +876,6 @@
             }
         }
     }, 
-    "Interactive": true, 
     "Summary": {
         "Yara": [
             "compressed_exe_in_rar", 
