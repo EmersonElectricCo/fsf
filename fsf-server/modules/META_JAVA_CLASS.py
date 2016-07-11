@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Author: Jason Batchelor
 # Description: Get metadata concerning Java class files

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Author: Jason Batchelor
 # Description: Extract metadata for Office documents

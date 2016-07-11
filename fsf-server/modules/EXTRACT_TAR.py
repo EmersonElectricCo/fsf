@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Author: Jason Batchelor
 # Description: Extract files from TAR archive file
