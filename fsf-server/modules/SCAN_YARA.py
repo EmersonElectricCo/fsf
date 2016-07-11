@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Jason Batchelor
 # Module used to scan files against our Yara signatures

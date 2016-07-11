@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Process objects and sub objects according to disposition criteria.
 # Log all the results. 

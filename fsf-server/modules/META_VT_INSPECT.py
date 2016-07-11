@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Author: Jason Batchelor
 # Description: Search VirusTotal database based on computed hash of buffer
