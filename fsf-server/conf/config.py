@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Basic configuration attributes for scanner. Used as default
 # unless the user overrides them. 

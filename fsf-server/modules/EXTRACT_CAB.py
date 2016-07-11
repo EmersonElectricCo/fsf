@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # Author: Jason Batchelor
 # Description: Unpack CAB using cabextract as a helper.
