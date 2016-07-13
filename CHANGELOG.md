@@ -1,3 +1,8 @@
+07/13/206
+---------
+
+* Small fix to make fsf virtualenv compatible
+
 04/27/2016
 ----------
 
