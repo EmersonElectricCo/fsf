@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #
 # This is the Python 'module' that contains the 
 # disposition criteria for Yara and jq filters the scanner framework

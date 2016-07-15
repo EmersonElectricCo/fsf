@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+#
 # Author: Jason Batchelor
 # Company: Emerson
 # Description: Extract metadata associated with ELF payloads
