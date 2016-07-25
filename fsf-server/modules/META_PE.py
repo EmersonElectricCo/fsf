@@ -185,7 +185,7 @@ def get_imports(pe):
       my_imports = []
       for imp in entry.imports:
          my_imports.append(imp.name)
-      IMPORTS['%s' % entry.dll] = my_imports
+      IMPORTS['%s' % entry.dll.replace('.dll', '')] = my_imports
 
    return IMPORTS
 
@@ -222,8 +222,8 @@ def META_PE(s, buff):
                         ('Sections', get_sections(pe)),
                         ('Resource Names', get_resource_names(pe)),
                         ('Resource Types', get_resource_types(pe)),
-                        ('Exports', get_exports(pe)),
-                        ('Imports', get_imports(pe)),
+                        ('Export Functions', get_exports(pe)),
+                        ('Import DLLs', get_imports(pe)),
                         ('Import Hash', pe.get_imphash()),
                         ('StringFileInfo', get_stringfileinfo(pe))])
 
