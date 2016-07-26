@@ -185,7 +185,7 @@ def get_imports(pe):
       my_imports = []
       for imp in entry.imports:
          my_imports.append(imp.name)
-      IMPORTS['%s' % entry.dll.replace('.dll', '')] = my_imports
+      IMPORTS['%s' % entry.dll.upper().replace('.DLL', '')] = my_imports
 
    return IMPORTS
 
