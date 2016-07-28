@@ -32,6 +32,9 @@ import hashlib
 import random
 from conf import config
 from datetime import datetime as dt
+import logging
+from watchdog.observers import Observer
+from watchdog.events import LoggingEventHandler, FileSystemEventHandler
 
 class FSFClient:
    def __init__(self, fullpath, filename, delete, source, archive, suppress_report, full, file):
@@ -146,15 +149,66 @@ class FSFClient:
       else:
          print error
 
-if __name__ == '__main__':
+class event_scanfsf(FileSystemEventHandler):
+    """Logs all the events captured."""
 
+    def on_created(self, event):
+        if not event.is_directory:
+            try:
+                with open(event.src_path) as f:
+                    file = f.read()
+                    fsf = FSFClient(event.src_path, event.src_path, "", "", "none", "", "", file)
+                    fsf.process_files()
+            except:
+                sys.stderr.write('Could not open file {0}\n'.format(event.src_path))
+
+def filedir_open(string):
+   if not os.path.exists(string):
+      sys.exit(1)
+   if os.path.isdir(string):
+      return string
+   else:
+      try:
+         f = open(string, 'r')
+      except IOError, why:
+         sys.stderr.write('Could not open file or directory. Error {0}\n'.format(why))
+         sys.exit(1)
+
+   return f
+
+def watch_single_dir(path):
+   if hasattr(path, 'name'):
+      sys.stderr.write('Not a directory - {0}\n'.format(path.name))
+      sys.exit(1)
+   if not os.path.exists(path):
+      sys.stderr.write('Directory {0} does not exist\n'.format(path))
+      sys.exit(1)
+   if not os.path.isdir(path):
+      sys.stderr.write('Not a directory - {0}\n'.format(path))
+      sys.exit(1)
+
+   event_handler = event_scanfsf()
+   observer = Observer()
+   observer.schedule(event_handler, path, recursive=False)
+   observer.start()
+
+   try:
+       while True:
+           time.sleep(1)
+   except KeyboardInterrupt:
+       observer.stop()
+
+   observer.join()
+
+if __name__ == '__main__':
    parser = argparse.ArgumentParser(prog='fsf_client', description='Uploads files to scanner server and returns the results to the user if desired. Results will always be written to a server side log file. Default options for each flag are designed to accommodate easy analyst interaction. Adjustments can be made to accommodate larger operations. Read the documentation for more details!')
-   parser.add_argument('file', nargs='*', type=argparse.FileType('r'), help='Full path to file(s) to be processed.')
+   parser.add_argument('file', nargs='*', type=filedir_open, help='Full path to file(s) to be processed.')
    parser.add_argument('--delete', default=False, action='store_true', help='Remove file from client after sending to the FSF server. Data can be archived later on server depending on selected options.')
    parser.add_argument('--source', nargs='?', type=str, default='Analyst', help='Specify the source of the input. Useful when scaling up to larger operations or supporting multiple input sources, such as; integrating with a sensor grid or other network defense solutions. Defaults to \'Analyst\' as submission source.')
    parser.add_argument('--archive', nargs='?', type=str, default='none', help='Specify the archive option to use. The most common option is \'none\' which will tell the server not to archive for this submission (default). \'file-on-alert\' will archive the file only if the alert flag is set. \'all-on-alert\' will archive the file and all sub objects if the alert flag is set. \'all-the-files\' will archive all the files sent to the scanner regardless of the alert flag. \'all-the-things\' will archive the file and all sub objects regardless of the alert flag.')
    parser.add_argument('--suppress-report', default=False, action='store_true', help='Don\'t return a JSON report back to the client and log client-side errors to the locally configured log directory. Choosing this will log scan results server-side only. Needed for automated scanning use cases when sending large amount of files for bulk collection. Set to false by default.')
    parser.add_argument('--full', default=False, action='store_true', help='Dump all sub objects of submitted file to current directory of the client. Format or directory name is \'fsf_dump_[epoch time]_[md5 hash of scan results]\'. Only supported when suppress-report option is false (default).')
+   parser.add_argument('--watchdir', default=False, action='store_true', help='Monitor a given directory and scan all uploaded files.')
 
    if len(sys.argv) == 1:
       parser.print_help()
@@ -167,11 +221,20 @@ if __name__ == '__main__':
       print 'The file provided could not be found. Error: %s' % e
       sys.exit(1)
 
+   if args.watchdir:
+      print 'Running in a daemon mode'
+      watch_single_dir(args.file[0])
+      sys.exit(0)
+
    if len(args.file) == 0:
       print 'A file to scan needs to be provided!' 
 
    for f in args.file:
-      filename = os.path.basename(f.name)
-      file = f.read()
-      fsf = FSFClient(f.name, filename, args.delete, args.source, args.archive, args.suppress_report, args.full, file)
-      fsf.process_files()
+      if hasattr(f, 'name'):
+         filename = os.path.basename(f.name)
+         file = f.read()
+         fsf = FSFClient(f.name, filename, args.delete, args.source, args.archive, args.suppress_report, args.full, file)
+         fsf.process_files()
+      else:
+         sys.stderr.write('Error while processing {0} - not a file?\n'.format(f))
+         sys.exit(1)
