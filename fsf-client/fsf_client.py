@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 #
 # FSF Client for sending information and generating a report
 #
@@ -48,12 +48,38 @@ class FSFClient:
          self.host = random.choice(config.SERVER_CONFIG['IP_ADDRESS'])
          self.port = config.SERVER_CONFIG['PORT']
          self.logfile = config.CLIENT_CONFIG['LOG_FILE']
-
+         self.server_list = config.SERVER_CONFIG['IP_ADDRESS']
+         
          archive_options = ['none', 'file-on-alert', 'all-on-alert', 'all-the-files', 'all-the-things']
          if args.archive not in archive_options:
-            error = '%s Please specify a valid archive option: \'none\', \'file-on-alert\', \'all-on-alert\', \'all-the-files\' or \'all-the-things\'.\n' % dt.now()
+            error = '\033[31m'+'%s Please specify a valid archive option: \'none\', \'file-on-alert\', \'all-on-alert\', \'all-the-files\' or \'all-the-things\'.\n' % dt.now()
             self.issue_error(error)
             sys.exit(1)
+
+# Test connection to randomized server and rudimentary fail over
+   def test_server_connection(self):
+      sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+      random.shuffle(self.server_list)
+      attempts = 0
+      for server in self.server_list:
+          success = 1
+          try:
+              sock.connect((server, self.port))
+          except:
+              warning ='\033[93m'+ '%s There was a problem connecting to %s on port %s. Trying another server. <WARN>' % (dt.now(), server, self.port)
+              self.issue_error(warning)
+              success = 0
+              attempts += 1
+          if success:
+              self.host = server
+              self.process_files()
+              break
+          elif attempts == len(self.server_list):
+              e = sys.exc_info()[0]
+              error = '\033[31m'+'%s There are not servers available to send files too. Error: %s\n' % (dt.now(), e)
+              self.issue_error(error)
+
 
    # Send files to server for processing and await results
    def process_files(self):
@@ -67,7 +93,7 @@ class FSFClient:
          sock.sendall(buffer)
       except:
          e = sys.exc_info()[0]
-         error = '%s There was a problem sending file %s to %s on port %s. Error: %s\n' % (dt.now(), self.filename, self.host, self.port, e)
+         error = '\033[31m'+'%s There was a problem sending file %s to %s on port %s. Error: %s\n' % (dt.now(), self.filename, self.host, self.port, e)
          self.issue_error(error)
 
       finally:
@@ -102,7 +128,7 @@ class FSFClient:
 
       except:
          e = sys.exc_info()[0]
-         error = '%s There was a problem getting data for %s from %s on port %s. Error: %s' % (dt.now(), self.filename, self.host, self.port, e)
+         error = '\033[31m'+'%s There was a problem getting data for %s from %s on port %s. Error: %s' % (dt.now(), self.filename, self.host, self.port, e)
          self.issue_error(error)
 
    # Dump all subobjects returned by the scanner server
@@ -144,7 +170,7 @@ class FSFClient:
             f.write(error)
             f.close()
       else:
-         print error
+         print error+'\033[0m'
 
 if __name__ == '__main__':
 
@@ -168,10 +194,10 @@ if __name__ == '__main__':
       sys.exit(1)
 
    if len(args.file) == 0:
-      print 'A file to scan needs to be provided!' 
+      print 'A file to scan needs to be provided!'
 
    for f in args.file:
       filename = os.path.basename(f.name)
       file = f.read()
       fsf = FSFClient(f.name, filename, args.delete, args.source, args.archive, args.suppress_report, args.full, file)
-      fsf.process_files()
+      fsf.test_server_connection()
