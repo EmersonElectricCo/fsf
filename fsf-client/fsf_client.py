@@ -44,8 +44,8 @@ class FSFClient:
          self.suppress_report = suppress_report
          self.full = full
          self.file = file
-         # If multiple server candidates are given, we randomly choose one
-         self.host = random.choice(config.SERVER_CONFIG['IP_ADDRESS'])
+         # will hold host after verifying connection to server
+         self.host = ''
          self.port = config.SERVER_CONFIG['PORT']
          self.logfile = config.CLIENT_CONFIG['LOG_FILE']
          self.server_list = config.SERVER_CONFIG['IP_ADDRESS']
