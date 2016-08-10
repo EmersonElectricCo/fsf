@@ -200,4 +200,4 @@ if __name__ == '__main__':
       filename = os.path.basename(f.name)
       file = f.read()
       fsf = FSFClient(f.name, filename, args.delete, args.source, args.archive, args.suppress_report, args.full, file)
-      fsf.test_server_connection()
+      fsf.initiate_submission()
