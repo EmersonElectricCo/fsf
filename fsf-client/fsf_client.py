@@ -58,16 +58,17 @@ class FSFClient:
 
 # Test connection to randomized server and rudimentary fail over
    def initiate_submission(self):
+      
       sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
       random.shuffle(self.server_list)
       attempts = 0
+      
       for server in self.server_list:
           success = 1
           try:
               sock.connect((server, self.port))
           except:
-              warning ='%s There was a problem connecting to %s on port %s. Trying another server. <WARN>' % (dt.now(), server, self.port)
+              warning ='%s There was a problem connecting to %s on port %s. Trying another server. <WARN>\n' % (dt.now(), server, self.port)
               self.issue_error(warning)
               success = 0
               attempts += 1
