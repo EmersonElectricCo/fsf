@@ -1,3 +1,8 @@
+08/17/2016
+---------
+
+* Merged pull request from spartan782. Allow fail over incase of multiple servers.
+
 07/13/2016
 ---------
 
