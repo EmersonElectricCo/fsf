@@ -56,7 +56,7 @@ class FSFClient:
             self.issue_error(error)
             sys.exit(1)
 
-# Test connection to randomized server and rudimentary fail over
+   # Test connection to randomized server and rudimentary fail over
    def initiate_submission(self):
       
       sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
