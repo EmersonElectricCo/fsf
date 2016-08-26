@@ -74,7 +74,7 @@ class FSFClient:
               attempts += 1
           if success:
               self.host = server
-              self.process_files()
+              self.process_files(sock)
               break
           elif attempts == len(self.server_list):
               e = sys.exc_info()[0]
@@ -83,14 +83,12 @@ class FSFClient:
 
 
    # Send files to server for processing and await results
-   def process_files(self):
+   def process_files(self, sock):
 
-      sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       msg = '%sFSF_RPC%sFSF_RPC%sFSF_RPC%sFSF_RPC%sFSF_RPC%s' % (self.filename, self.source, self.archive, self.suppress_report, self.full, self.file)
       buffer = struct.pack('>I', len(msg)) + 'FSF_RPC' + msg
 
       try:
-         sock.connect((self.host, self.port))
          sock.sendall(buffer)
       except:
          e = sys.exc_info()[0]

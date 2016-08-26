@@ -1,3 +1,8 @@
+08/28/2016
+---------
+
+* Small bug fix in how connection attempts are made from client. 
+
 08/17/2016
 ---------
 
