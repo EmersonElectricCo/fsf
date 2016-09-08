@@ -2,7 +2,7 @@
 #
 # Author: Jamie Ford
 # Description: Parses mach-o files using the Macholibre library by Aaron Stevens
-#
+# Returns various metadata about the file
 # Date: 09/08/2016
 '''
    Copyright 2016 BroEZ
