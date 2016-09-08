@@ -19,4 +19,5 @@ __all__ = ['META_BASIC_INFO',
            'META_ELF',
            'META_VT_INSPECT',
 	   'EXTRACT_HEXASCII_PE',
+	   'EXTRACT_MACHO'
            ]
