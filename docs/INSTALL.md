@@ -3,7 +3,7 @@ Install Guide
 
 The following step-by-step instructions were tested against Ubuntu Server 14.04.3 and CentOS 7.
 
-Required Packages 
+Required Packages
 ------------------
 
 Install the following required packages. Once you complete this step, the rest of the installation is the same for either platform.
@@ -31,7 +31,7 @@ Get remaining packages.
 
 `sudo yum install python-argparse python-pip ssdeep-devel libffi-devel unrar upx unzip cabextract`
 
-Installing Yara 
+Installing Yara
 ------------------
 
 Make sure you are getting the latest and greatest version of Yara...
@@ -77,7 +77,7 @@ Install the following Python modules using `pip`.
 
 ```
 sudo easy_install -U setuptools
-sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests
+sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests git+https://github.com/aaronst/macholibre.git
 ```
 NOTE: Ensure pefile is at least version pefile-1.2.10-139. On some distros a latter version is installed which means you will need to build from source. To do this, simply follow the instructions below...
 
@@ -144,7 +144,7 @@ Create the following file _/etc/logrotate.d/scanner_ and put have the following 
 ```
 compress
 copytruncate
- 
+
 /YOUR/LOG/PATH/*.log {
         weekly
         create 0664 YOUR_USER YOUR_GROUP
@@ -152,5 +152,3 @@ copytruncate
 }
 ```
 The above will compress log files on a weekly basis in your directory. It will assign the permissions to the user and group you supply and logs will rotate off after five weeks. The _copytruncate_ option is important to ensure logs like _daemon.log_ will continue logging data after it is rotated.
-
-
