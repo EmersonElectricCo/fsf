@@ -25,7 +25,7 @@ from StringIO import StringIO
 import os
 from tempfile import mkstemp
 
-def EXTRACT_MACHO(s, buff):
+def META_MACHO(s, buff):
     tmpfd, tmpfile = mkstemp()
     tmpf = os.fdopen(tmpfd, 'wb')
 
@@ -37,9 +37,17 @@ def EXTRACT_MACHO(s, buff):
     finally:
         #Remove it to save space
         os.remove(tmpfile)
+
     if dictionary.has_key('name'):
         #The name doesn't make sense with the temp file
         dictionary.pop('name')
+
+    # META_BASIC_INFO already hs this informaton
+    if dictionary.has_key('hashes'):
+        dictionary.pop('hashes')
+    if dictionary.has_key('size'):
+        dictionary.pop('size')
+
     #Macholibre either has macho or universal
     if dictionary.has_key('macho'):
         popMachoKeys(dictionary['macho'])
@@ -48,7 +56,6 @@ def EXTRACT_MACHO(s, buff):
         if dictionary['universal'].has_key('machos'):
             for macho in dictionary['universal']['machos']:
                 popMachoKeys(macho)
-
 
     return dictionary
 
@@ -61,4 +68,4 @@ def popMachoKeys(macho):
 
 
 if __name__ == '__main__':
-    print(EXTRACT_MACHO(None, sys.stdin.read()))
+    print(META_MACHO(None, sys.stdin.read()))
