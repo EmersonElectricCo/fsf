@@ -51,17 +51,26 @@ def META_MACHO(s, buff):
     #Macholibre either has macho or universal
     if dictionary.has_key('macho'):
         popMachoKeys(dictionary['macho'])
+        dictionary['Universal'] = False
+        dictionary['machos'] = [dictionary.pop('macho')]
+
     elif dictionary.has_key('universal'):
         #Universal has embedded machos
         if dictionary['universal'].has_key('machos'):
+            dictionary['Universal'] = True
+            dictionary['machos'] = []
             for macho in dictionary['universal']['machos']:
                 popMachoKeys(macho)
+                dictionary['machos'].append(macho)
+            dictionary.pop('universal')
+
+
 
     return dictionary
 
 def popMachoKeys(macho):
     #Keys to keep to prevent too much printout
-    keepKeys = ['filetype', 'signature', 'flags', 'offset', 'cputtype', 'minos', 'size', 'dylibs']
+    keepKeys = ['filetype', 'signature', 'flags', 'offset', 'cputype', 'minos', 'size', 'dylibs', 'subtype']
     for key in macho.keys():
         if (key not in keepKeys):
             macho.pop(key)

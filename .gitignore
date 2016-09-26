@@ -1,0 +1,5 @@
+# Compiled pyc files
+*.pyc
+
+# Jetbrains pycharm stuff
+.idea/*
