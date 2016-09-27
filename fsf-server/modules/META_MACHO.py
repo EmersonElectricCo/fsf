@@ -47,7 +47,7 @@ def META_MACHO(s, buff):
         dictionary.pop('hashes')
     if dictionary.has_key('size'):
         dictionary.pop('size')
-    dictionary['architecutures'] = set()
+    dictionary['architecutures'] = []
 
 
     #Macholibre either has macho or universal
@@ -60,7 +60,7 @@ def META_MACHO(s, buff):
         # Makes the key Macho + the cputype from the macho dictionary, if it has that key. Also replaces spaces with '_'
         machoKey = "macho_" + macho['cputype'].replace(' ', '_') if macho.has_key('cputype') else 'macho'
         dictionary['machos'] = [{machoKey: macho}]
-        dictionary['architecutures'].add(macho['subtype'] if macho.has_key('subtype') else '')
+        dictionary['architecutures'].append(macho['subtype'] if macho.has_key('subtype') else '')
 
         del macho, machoKey
 
@@ -76,7 +76,7 @@ def META_MACHO(s, buff):
                 # Does the same thing but make sure not to overwrite the indexes if neither has 'cputype' as a key
                 machoKey = "macho_" + macho['cputype'].replace(' ', '_') if hasCPU else 'macho_' + str(index)
                 if macho.has_key('subtype'):
-                    dictionary['architecutures'].add(macho['subtype'])
+                    dictionary['architecutures'].append(macho['subtype'])
                 dictionary['machos'].append({machoKey: macho})
             dictionary.pop('universal')
 
