@@ -24,7 +24,7 @@ Turn on EPEL repo.
 
 Turn on RPMForge repo.
 ```
-wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+wget http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
 rpm -Uvh rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
 ```
 Get remaining packages.
