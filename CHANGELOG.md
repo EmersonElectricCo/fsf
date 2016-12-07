@@ -1,3 +1,8 @@
+12/07/2016
+---------
+
+* Better error output when an export directory cannot be created or written to.
+
 08/28/2016
 ---------
 

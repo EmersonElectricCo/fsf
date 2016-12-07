@@ -174,6 +174,7 @@ def archive_file(s):
          f.write(s.file)
          f.close()
    except:
+      e = sys.exc_info()[0]
       s.dbg_h.error('%s There was an error writing to the export directory. Error: %s' % (dt.now(), e))
 
    return path
@@ -185,9 +186,10 @@ def archive_all(s, report):
    # Generate dirname by calculating epoch time and hash of results
    dirname = '%s/fsf_dump_%s_%s' % (s.export_path, int(time.time()), hashlib.md5(report_dump).hexdigest())
 
-   os.mkdir(dirname)
-   
    try:
+
+      os.mkdir(dirname)
+
       # Archive the base file
       with open ('%s/%s' % (dirname, s.filename), 'w') as f:
          f.write(s.file)
@@ -200,6 +202,7 @@ def archive_all(s, report):
             f.write(data)
             f.close
    except:
+      e = sys.exc_info()[0]
       s.dbg_h.error('%s There was an error writing to the export directory. Error: %s' % (dt.now(), e))
 
    return dirname
