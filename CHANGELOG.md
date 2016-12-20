@@ -1,3 +1,8 @@
+12/20/2016
+---------
+
+* Added new module META_MACHO - Collect data on Mach-o binaries (thanks zcatbear!)
+
 12/07/2016
 ---------
 
