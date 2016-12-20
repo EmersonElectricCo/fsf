@@ -83,6 +83,7 @@ The table below provides this information:
 |META_JAVA_CLASS|Expose requirements, capabilities, and other metadata inside Java class files.|
 |META_VT_INSPECT|Get VirusTotal info concerning a specific file MD5. (Requires Public or Private API Key)|
 |EXTRACT_HEXASCII_PE|Get encoded PE elements out of files and convert to binary.|
+|META_MACHO|Exposes the metadata within MACHO binares.|
 
 ###How does this scale up if I want to 'scan all the things'?###
 
