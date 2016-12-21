@@ -82,9 +82,9 @@ sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hacho
 NOTE: Ensure pefile is at least version pefile-1.2.10-139. On some distros a latter version is installed which means you will need to build from source. To do this, simply follow the instructions below...
 
 ```
-wget http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz
-tar -xvzf pefile-1.2.10-139.tar.gz
-cd pefile-1.2.10-139
+wget https://github.com/erocarrera/pefile/files/192316/pefile-2016.3.28.tar.gz
+tar -xvzf pefile-2016.3.28.tar.gz
+cd pefile-2016.3.28
 python setup.py build
 sudo python setup.py install
 ```
