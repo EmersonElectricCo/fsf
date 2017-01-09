@@ -50,12 +50,6 @@ class FSFClient:
          self.logfile = config.CLIENT_CONFIG['LOG_FILE']
          self.server_list = config.SERVER_CONFIG['IP_ADDRESS']
          
-         archive_options = ['none', 'file-on-alert', 'all-on-alert', 'all-the-files', 'all-the-things']
-         if args.archive not in archive_options:
-            error = '%s Please specify a valid archive option: \'none\', \'file-on-alert\', \'all-on-alert\', \'all-the-files\' or \'all-the-things\'.\n' % dt.now()
-            self.issue_error(error)
-            sys.exit(1)
-
    # Test connection to randomized server and rudimentary fail over
    def initiate_submission(self):
       
@@ -194,7 +188,13 @@ if __name__ == '__main__':
 
    if len(args.file) == 0:
       print 'A file to scan needs to be provided!'
-
+   
+   archive_options = ['none', 'file-on-alert', 'all-on-alert', 'all-the-files', 'all-the-things']
+   if args.archive not in archive_options:
+      error = '%s Please specify a valid archive option: \'none\', \'file-on-alert\', \'all-on-alert\', \'all-the-files\' or \'all-the-things\'.\n' % dt.now()
+      self.issue_error(error)
+      sys.exit(1)
+   
    for f in args.file:
       filename = os.path.basename(f.name)
       file = f.read()
