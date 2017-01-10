@@ -191,8 +191,7 @@ if __name__ == '__main__':
    
    archive_options = ['none', 'file-on-alert', 'all-on-alert', 'all-the-files', 'all-the-things']
    if args.archive not in archive_options:
-      error = '%s Please specify a valid archive option: \'none\', \'file-on-alert\', \'all-on-alert\', \'all-the-files\' or \'all-the-things\'.\n' % dt.now()
-      self.issue_error(error)
+      print 'Please specify a valid archive option: \'none\', \'file-on-alert\', \'all-on-alert\', \'all-the-files\' or \'all-the-things\'.'
       sys.exit(1)
    
    for f in args.file:
