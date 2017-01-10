@@ -1,3 +1,9 @@
+1/10/2017
+---------
+
+* Moving CLI arg input check for archive type out of the fsf-client module to the main section to make the client code easier to re-use.
+
+
 12/20/2016
 ---------
 
