@@ -1,3 +1,9 @@
+2/08/2017
+---------
+
+* Merged PR #41 to fix issue #40 where the META_JAVA class was returning a tuple in one of its sub values. This was causing issues with external systems that had strict json interperters. Fix was to convert the tuple to a python dictionary / json sub-document.
+
+
 1/10/2017
 ---------
 
