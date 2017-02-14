@@ -42,7 +42,7 @@ def META_JAVA_CLASS(s, buff):
    META_DICT = classinfo.cli_simplify_classinfo(options, info)
    _constants_pool = []
    for x in META_DICT['constants_pool']:
-      _constants_pool.append({"index": x[0], "type": x[1], "value": x[2]})
+      _constants_pool.append({"index": x[0], "type": x[1], "value": str(x[2])})
    META_DICT["constants_pool"] = _constants_pool
    return META_DICT
 
