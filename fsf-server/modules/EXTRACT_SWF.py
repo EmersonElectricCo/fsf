@@ -29,7 +29,6 @@ def EXTRACT_SWF(s, buff):
 
    magic = buff[:3]
    data = ''
-
    if magic == 'CWS':
       SWF['Buffer'] = 'FWS' + buff[3:8] + zlib.decompress(buff[8:])
    elif magic == 'ZWS':
@@ -37,7 +36,7 @@ def EXTRACT_SWF(s, buff):
    elif magic == 'FWS':
       SWF['Version'] = ord(buff[3])
 
-   return SWF
+   return {"Object": SWF}
 
 if __name__ == '__main__':
    # For testing, s object can be None type if unused in function

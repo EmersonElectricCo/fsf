@@ -43,7 +43,7 @@ class Scanner:
       self.log_path = config.SCANNER_CONFIG['LOG_PATH']
       self.max_depth = config.SCANNER_CONFIG['MAX_DEPTH']
       self.dbg_h = ""
-      self.scan_h = ""
+      self.scan_h = {}
       self.timeout = config.SCANNER_CONFIG['TIMEOUT']
       self.alert = False
       self.full = ""
@@ -70,21 +70,38 @@ class Scanner:
             % self.export_path
             sys.exit(2)
 
-   def initialize_logger(self):
+   def initialize_logger(self, fsf_loggers):
+      """
+      Invoke logging with a concurrent logging module since many of these
+      processes will likely be writing to the scan logs at the same time
+      scan_h is a dict with the following structure:
+         {
+         "<logger_name>": {
+            "logger": <logger instance>,
+            "module":<sys.modules value of module>,
+            "path": string, path to logfile output
+            }
+         }
+      :param fsf_loggers: type:list, the filenames (less extensions) of all active loggers in fsf-server.logging_modules
+      """
 
-      # Invoke logging with a concurrent logging module since many of these
-      # processes will likely be writing to scan.log at the same time
       self.dbg_h = logging.getLogger('dbg_log')
       dbglog = '%s/%s' % (self.log_path, 'dbg.log')
       dbg_rotateHandler = ConcurrentRotatingFileHandler(dbglog, "a")
       self.dbg_h.addHandler(dbg_rotateHandler)
       self.dbg_h.setLevel(logging.ERROR)
 
-      self.scan_h = logging.getLogger('scan_log')
-      scanlog = '%s/%s' % (self.log_path, 'scan.log')
-      scan_rotateHandler = ConcurrentRotatingFileHandler(scanlog, "a")
-      self.scan_h.addHandler(scan_rotateHandler)
-      self.scan_h.setLevel(logging.INFO)
+      # For each loaded logger create its apprpriate entries
+      for fsf_logger in fsf_loggers:
+         self.scan_h[fsf_logger] = {
+            'logger': logging.getLogger(fsf_logger),
+            'module': sys.modules["logging_modules.%s" % fsf_logger],
+            'path': '%s/%s.log' % (self.log_path, fsf_logger)
+         }
+         scan_rotateHandler = ConcurrentRotatingFileHandler(self.scan_h[fsf_logger]['path'], "a")
+         self.scan_h[fsf_logger]['logger'].addHandler(scan_rotateHandler)
+         self.scan_h[fsf_logger]['logger'].setLevel(logging.INFO)
+
 
    def check_yara_file(self):
 

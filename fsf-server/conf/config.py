@@ -11,7 +11,9 @@ SCANNER_CONFIG = { 'LOG_PATH' : '/tmp',
                    'PID_PATH' : '/tmp/scanner.pid',
                    'EXPORT_PATH' : '/tmp',
                    'TIMEOUT' : 60,
-                   'MAX_DEPTH' : 10 }
+                   'MAX_DEPTH' : 10,
+                   'ACTIVE_LOGGING_MODULES' : ['scan_log', 'rockout'],
+                   }
 
 SERVER_CONFIG = { 'IP_ADDRESS' : socket.gethostname(),
                   'PORT' : 5800 }
