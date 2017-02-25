@@ -134,12 +134,13 @@ def get_dllcharacteristics(pe):
 
 def get_resource_names(pe):
 
+   resource_names = []
+
    try: 
       pe.DIRECTORY_ENTRY_RESOURCE.entries
    except:
-      return 'None'
+      return resource_names
 
-   resource_names = []
    for res in pe.DIRECTORY_ENTRY_RESOURCE.entries:
       if res.name is not None:
          resource_names.append(res.name.__str__())
@@ -147,12 +148,13 @@ def get_resource_names(pe):
 
 def get_resource_types(pe):
 
+   resource_types = []
+
    try:
       pe.DIRECTORY_ENTRY_RESOURCE.entries
    except:
-      return 'None'
+      return resource_types
 
-   resource_types = []
    for res in pe.DIRECTORY_ENTRY_RESOURCE.entries:
       if res.id is not None:
          resource_types.append(enum_resources(res.id))
@@ -165,7 +167,7 @@ def get_exports(pe):
    try:
       pe.DIRECTORY_ENTRY_EXPORT.symbols
    except:
-      return 'None'
+      return my_exports
 
    for exp in pe.DIRECTORY_ENTRY_EXPORT.symbols:
       my_exports.append(exp.name)
@@ -179,7 +181,7 @@ def get_imports(pe):
    try:
       pe.DIRECTORY_ENTRY_IMPORT
    except:
-      return 'None'
+      return IMPORTS
 
    for entry in pe.DIRECTORY_ENTRY_IMPORT:
       my_imports = []
@@ -230,4 +232,5 @@ def META_PE(s, buff):
    return META_PE
 
 if __name__ == '__main__':
-   print META_PE(None, sys.stdin.read())
+    print META_PE(None, sys.stdin.read())
+
