@@ -196,7 +196,7 @@ def get_stringfileinfo(pe):
    try:
       pe.FileInfo
    except:
-      return 'None'
+      return STRINGFILEINFO
 
    for fi in pe.FileInfo:
       if fi.Key == 'StringFileInfo':
