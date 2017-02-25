@@ -1,3 +1,7 @@
+2/25/2017
+----------
+* Merged PR#46 which is minor tweak to the misc_hexascii_pe_in_html comments to help avoid some AV vendors flagging the rule file as malware. 
+
 2/09/2017
 ---------
 * Merged PR#43 which moves the pidfile path (formerly hard coded into fsf-server.main) to the fsf-server.conf.config. This allows for more flexible deployment of FSF across multiple platforms. 
