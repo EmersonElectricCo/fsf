@@ -1,6 +1,10 @@
-2/25/2017
+2/27/2017
 ---------
 * Merge PR#47 which addresses META_PE output inconsistencies during module exceptions. This should increase consistency in FSF outputs and remove barriers to indexing / storage in document oriented databases. 
+
+2/25/2017
+----------
+* Merged PR#46 which is minor tweak to the misc_hexascii_pe_in_html comments to help avoid some AV vendors flagging the rule file as malware. 
 
 2/09/2017
 ---------
