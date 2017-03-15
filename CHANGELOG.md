@@ -1,3 +1,6 @@
+3/15/2017
+---------
+* Merged PR#50 which explicitly casts values in the META_JAVA_CLASS module to strings
 
 2/27/2017
 ---------
