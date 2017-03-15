@@ -1,3 +1,4 @@
+
 2/27/2017
 ---------
 * Merge PR#47 which addresses META_PE output inconsistencies during module exceptions. This should increase consistency in FSF outputs and remove barriers to indexing / storage in document oriented databases. 
