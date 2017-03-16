@@ -4,6 +4,7 @@
 # Description: Parses mach-o files using the Macholibre library by Aaron Stevens
 # Returns various metadata about the file
 # Date: 09/08/2016
+# Updated: 3/16/17
 '''
    Copyright 2016 BroEZ
 
@@ -20,7 +21,7 @@
    limitations under the License.
 '''
 import sys
-from macholibre import macholibre
+import macholibre
 
 import os
 from tempfile import mkstemp

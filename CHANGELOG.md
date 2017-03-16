@@ -1,3 +1,7 @@
+3/16/2017
+---------
+* Solved Issue #49. A recent change in in the MachoLibre Module on or around abdb9c9a4378a1ff261525bbb75d7062eff95e5b changed the packaged structure
+
 3/15/2017
 ---------
 * Merged PR#50 which explicitly casts values in the META_JAVA_CLASS module to strings
