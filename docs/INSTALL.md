@@ -8,13 +8,13 @@ Required Packages
 
 Install the following required packages. Once you complete this step, the rest of the installation is the same for either platform.
 
-###Ubuntu###
+### Ubuntu ###
 
 ```
 sudo apt-get install autoconf dh-autoreconf python-dev libpython2.7-stdlib python-pip libffi-dev ssdeep upx unrar libfuzzy-dev unzip wget vim libssl-dev net-tools cabextract
 ```
 
-###CentOS###
+### CentOS ###
 
 `sudo yum install autoconf python-devel automake wget vim libtool openssl openssl-devel net-tools`
 
