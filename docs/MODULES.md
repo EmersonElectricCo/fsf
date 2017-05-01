@@ -23,7 +23,7 @@ All modules are stored in the _modules_ directory and follow a loosely defined n
 
 There is a `modules/template.py` file in the modules directory that is a simple starting point. 
 
-###Module Requirements###
+### Module Requirements###
 
 * By convention, your module must have a function with your modules name. (Example: A module named META_TEST.py should have a function named META_TEST).
  * This is what FSF will call when your module is plugged in
@@ -31,7 +31,7 @@ There is a `modules/template.py` file in the modules directory that is a simple 
  * The main function must return a dictionary
   * Empty dictionary objects are deleted before displayed
 
-###Scanner Object###
+### Scanner Object###
 
 Modules are granted access to a scanner object which has the following attributes:
 * Filename - (String) - Name of the initial file being analyzed
@@ -50,13 +50,13 @@ Modules are granted access to a scanner object which has the following attribute
 * Full - (Boolean) - Value too see if user wants all subobjects
 * Sub objects - (List) - Storage for different subobjects returned from modules
 
-###File Recursion###
+### File Recursion###
 
 Returned buffers are processed recursively with the framework, and the convention for doing this is to simply append the buffer you plan on returning affixed to a dictionary key named _Buffer_. Doing so will cause the processor script to iterate through the assigned values and run modules on them as defined in the _conf/dispositioner.py_ file.
 
 If you need to return multiple buffers for whatever reason, you might want to consider a parent/child hierarchy, where your parent dictionary is assigned an object identifier for a key and a child dictionary with your _Buffer_ key and value pair. The modules EXTRACT_RAR and EXTRACT_ZIP are good examples of this.  
 
-###Adding a Module###
+### Adding a Module###
 
 The following steps need to be followed when adding a module to the framework.
 
@@ -203,7 +203,7 @@ Areas to troubleshoot for difficulties running at this level on the server side 
 Automated File Extraction
 ------------
 
-###Bro###
+### Bro###
 
 The following Bro script was compiled and tested with Bro 2.4. After simply adding it to the ''local.bro'' file and deploying, you should be all set! This script aids in the automatic extraction of files, and the sending of those files to an FSF server.
 
