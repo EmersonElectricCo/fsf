@@ -136,7 +136,7 @@ if __name__ == "__main__":
    with open(daemon_logger, 'a') as fh:
       fh.write('%s Daemon given %s command\n' % (dt.now(), sys.argv[1]))
 
-   daemon = ScannerDaemon('/tmp/scanner.pid', stdin=daemon_logger, stdout=daemon_logger, stderr=daemon_logger)
+   daemon = ScannerDaemon(config.SCANNER_CONFIG['PID_PATH'], stdin=daemon_logger, stdout=daemon_logger, stderr=daemon_logger)
 
    if 'start' == sys.argv[1]:
       daemon.start()

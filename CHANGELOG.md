@@ -1,3 +1,55 @@
+3/16/2017
+---------
+* Solved Issue #49. A recent change in in the MachoLibre Module on or around abdb9c9a4378a1ff261525bbb75d7062eff95e5b changed the packaged structure
+
+3/15/2017
+---------
+* Merged PR#50 which explicitly casts values in the META_JAVA_CLASS module to strings
+
+2/27/2017
+---------
+* Merge PR#47 which addresses META_PE output inconsistencies during module exceptions. This should increase consistency in FSF outputs and remove barriers to indexing / storage in document oriented databases. 
+
+2/25/2017
+----------
+* Merged PR#46 which is minor tweak to the misc_hexascii_pe_in_html comments to help avoid some AV vendors flagging the rule file as malware. 
+
+2/09/2017
+---------
+* Merged PR#43 which moves the pidfile path (formerly hard coded into fsf-server.main) to the fsf-server.conf.config. This allows for more flexible deployment of FSF across multiple platforms. 
+
+2/08/2017
+---------
+
+* Merged PR #41 to fix issue #40 where the META_JAVA class was returning a tuple in one of its sub values. This was causing issues with external systems that had strict json interperters. Fix was to convert the tuple to a python dictionary / json sub-document.
+
+
+1/10/2017
+---------
+
+* Moving CLI arg input check for archive type out of the fsf-client module to the main section to make the client code easier to re-use.
+
+
+12/20/2016
+---------
+
+* Added new module META_MACHO - Collect data on Mach-o binaries (thanks zcatbear!)
+
+12/07/2016
+---------
+
+* Better error output when an export directory cannot be created or written to.
+
+08/28/2016
+---------
+
+* Small bug fix in how connection attempts are made from client. 
+
+08/17/2016
+---------
+
+* Merged pull request from spartan782. Allow fail over incase of multiple servers.
+
 07/13/2016
 ---------
 

@@ -2,9 +2,9 @@
 #
 # Author: Jason Batchelor
 # Description: Get metadata concerning Java class files
-# Date: 01/26/2016
+# Date: 02/07/2017 (updated)
 '''
-   Copyright 2016 Emerson Electric Co.
+   Copyright 2017 Emerson Electric Co.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -40,7 +40,10 @@ def META_JAVA_CLASS(s, buff):
    options = classinfo_options()
    info = unpack_class(buff)
    META_DICT = classinfo.cli_simplify_classinfo(options, info)
-
+   _constants_pool = []
+   for x in META_DICT['constants_pool']:
+      _constants_pool.append({"index": x[0], "type": x[1], "value": str(x[2])})
+   META_DICT["constants_pool"] = _constants_pool
    return META_DICT
 
 if __name__ == '__main__':

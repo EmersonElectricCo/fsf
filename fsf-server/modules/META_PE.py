@@ -134,12 +134,13 @@ def get_dllcharacteristics(pe):
 
 def get_resource_names(pe):
 
+   resource_names = []
+
    try: 
       pe.DIRECTORY_ENTRY_RESOURCE.entries
    except:
-      return 'None'
+      return resource_names
 
-   resource_names = []
    for res in pe.DIRECTORY_ENTRY_RESOURCE.entries:
       if res.name is not None:
          resource_names.append(res.name.__str__())
@@ -147,12 +148,13 @@ def get_resource_names(pe):
 
 def get_resource_types(pe):
 
+   resource_types = []
+
    try:
       pe.DIRECTORY_ENTRY_RESOURCE.entries
    except:
-      return 'None'
+      return resource_types
 
-   resource_types = []
    for res in pe.DIRECTORY_ENTRY_RESOURCE.entries:
       if res.id is not None:
          resource_types.append(enum_resources(res.id))
@@ -165,7 +167,7 @@ def get_exports(pe):
    try:
       pe.DIRECTORY_ENTRY_EXPORT.symbols
    except:
-      return 'None'
+      return my_exports
 
    for exp in pe.DIRECTORY_ENTRY_EXPORT.symbols:
       my_exports.append(exp.name)
@@ -179,13 +181,13 @@ def get_imports(pe):
    try:
       pe.DIRECTORY_ENTRY_IMPORT
    except:
-      return 'None'
+      return IMPORTS
 
    for entry in pe.DIRECTORY_ENTRY_IMPORT:
       my_imports = []
       for imp in entry.imports:
          my_imports.append(imp.name)
-      IMPORTS['%s' % entry.dll] = my_imports
+      IMPORTS['%s' % entry.dll.upper().split('.')[0]] = my_imports
 
    return IMPORTS
 
@@ -196,7 +198,7 @@ def get_stringfileinfo(pe):
    try:
       pe.FileInfo
    except:
-      return 'None'
+      return STRINGFILEINFO
 
    for fi in pe.FileInfo:
       if fi.Key == 'StringFileInfo':
@@ -222,12 +224,13 @@ def META_PE(s, buff):
                         ('Sections', get_sections(pe)),
                         ('Resource Names', get_resource_names(pe)),
                         ('Resource Types', get_resource_types(pe)),
-                        ('Exports', get_exports(pe)),
-                        ('Imports', get_imports(pe)),
+                        ('Export Functions', get_exports(pe)),
+                        ('Import DLLs', get_imports(pe)),
                         ('Import Hash', pe.get_imphash()),
                         ('StringFileInfo', get_stringfileinfo(pe))])
 
    return META_PE
 
 if __name__ == '__main__':
-   print META_PE(None, sys.stdin.read())
+    print META_PE(None, sys.stdin.read())
+

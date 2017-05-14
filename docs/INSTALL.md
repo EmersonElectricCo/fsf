@@ -3,18 +3,18 @@ Install Guide
 
 The following step-by-step instructions were tested against Ubuntu Server 14.04.3 and CentOS 7.
 
-Required Packages 
+Required Packages
 ------------------
 
 Install the following required packages. Once you complete this step, the rest of the installation is the same for either platform.
 
-###Ubuntu###
+### Ubuntu ###
 
 ```
 sudo apt-get install autoconf dh-autoreconf python-dev libpython2.7-stdlib python-pip libffi-dev ssdeep upx unrar libfuzzy-dev unzip wget vim libssl-dev net-tools cabextract
 ```
 
-###CentOS###
+### CentOS ###
 
 `sudo yum install autoconf python-devel automake wget vim libtool openssl openssl-devel net-tools`
 
@@ -24,14 +24,14 @@ Turn on EPEL repo.
 
 Turn on RPMForge repo.
 ```
-wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+wget http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
 rpm -Uvh rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
 ```
 Get remaining packages.
 
 `sudo yum install python-argparse python-pip ssdeep-devel libffi-devel unrar upx unzip cabextract`
 
-Installing Yara 
+Installing Yara
 ------------------
 
 Make sure you are getting the latest and greatest version of Yara...
@@ -77,14 +77,14 @@ Install the following Python modules using `pip`.
 
 ```
 sudo easy_install -U setuptools
-sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests
+sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests git+https://github.com/aaronst/macholibre.git
 ```
 NOTE: Ensure pefile is at least version pefile-1.2.10-139. On some distros a latter version is installed which means you will need to build from source. To do this, simply follow the instructions below...
 
 ```
-wget http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz
-tar -xvzf pefile-1.2.10-139.tar.gz
-cd pefile-1.2.10-139
+wget https://github.com/erocarrera/pefile/files/192316/pefile-2016.3.28.tar.gz
+tar -xvzf pefile-2016.3.28.tar.gz
+cd pefile-2016.3.28
 python setup.py build
 sudo python setup.py install
 ```
@@ -144,7 +144,7 @@ Create the following file _/etc/logrotate.d/scanner_ and put have the following 
 ```
 compress
 copytruncate
- 
+
 /YOUR/LOG/PATH/*.log {
         weekly
         create 0664 YOUR_USER YOUR_GROUP
@@ -152,5 +152,3 @@ copytruncate
 }
 ```
 The above will compress log files on a weekly basis in your directory. It will assign the permissions to the user and group you supply and logs will rotate off after five weeks. The _copytruncate_ option is important to ensure logs like _daemon.log_ will continue logging data after it is rotated.
-
-

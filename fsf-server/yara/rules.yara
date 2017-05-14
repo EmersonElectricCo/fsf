@@ -13,6 +13,7 @@ include "ft_jar.yara"
 include "ft_cab.yara"
 include "ft_elf.yara"
 include "ft_java_class.yara"
+include "ft_macho.yara"
 
 // Misc Signatures
 include "misc_ooxml_core_properties.yara"
