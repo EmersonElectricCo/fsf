@@ -5,12 +5,12 @@
 # the following, replacing “~/fsf-workdir" with the path to the location of your FSF
 # working directory:
 #
-# sudo docker run --rm -it -v ~/fsf-workdir:/home/nonroot/workdir wzod/fsf
+# sudo docker run --rm -it -v ~/fsf-workdir:/home/nonroot/workdir punkrokk/fsf
 #
 # To run this image using a networked instance, use a command like this after installing
 # FSF on the host system:
 #
-# sudo docker run --rm -it -p 5800:5800 -v ~/fsf-workdir:/home/nonroot/workdir wzod/fsf
+# sudo docker run --rm -it -p 5800:5800 -v ~/fsf-workdir:/home/nonroot/workdir punkrokk/fsf
 #
 # Before running FSF, create the  ~/fsf-workdir and make it world-accessible
 # (“chmod a+xwr").
@@ -29,7 +29,7 @@
 #
 
 FROM ubuntu:14.04
-MAINTAINER Zod (@wzod)
+MAINTAINER Zod (@wzod), punkrokk (@jp_bourget)
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -63,7 +63,8 @@ RUN apt-get update && \
   wget && \
 
 # Update setuptools
-  easy_install -U setuptools
+# easy install can no longer update itself
+pip install --upgrade setuptools
 
 # Retrieve current version of Yara via wget, verify known good hash and install Yara
 RUN cd /tmp && \
@@ -83,13 +84,9 @@ RUN cd /tmp && \
   python setup.py install && \
   cd /tmp && \
 
-# Retrieve current version of pefile via wget, verify known good hash and install pefile
-  wget -O pefile-1.2.10-139.tar.gz "http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz" && \
-  echo 8b7c5d853c97a923d0f6e128d0ae76b962aa75fd608d552f5a32e46276908a16\ \ pefile-1.2.10-139.tar.gz > sha256sum-pefile && \
-  sha256sum -c sha256sum-pefile && \
-
-  tar vxzf pefile-1.2.10-139.tar.gz && \
-  cd pefile-1.2.10-139 && \
+# pefile moved to github
+  cd /tmp && git clone https://github.com/erocarrera/pefile.git && \
+  cd pefile && \
   python setup.py build && \
   python setup.py install && \
   cd /tmp && \
@@ -114,11 +111,13 @@ RUN pip install czipfile \
   rarfile \
   pylzma \
   oletools \
-  pyasn1_modules \ 
+  pyasn1_modules \
   pyasn1 \
   pyelftools \
   javatools \
   requests && \
+  #current fsf_server requires macholibre
+  pip install git+https://github.com/aaronst/macholibre.git && \
 
   BUILD_LIB=1 pip install ssdeep
 
