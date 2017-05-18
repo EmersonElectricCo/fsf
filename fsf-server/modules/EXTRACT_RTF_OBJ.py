@@ -36,7 +36,7 @@ def EXTRACT_RTF_OBJ(s, buff):
       tmpf.close()
       objs = rtfobj.rtf_iter_objects(tmpfile)
 
-      for index, data in objs:
+      for index, orig_len, data in objs:
          CHILD_OBJ = {'Index'  : index,
                       'Buffer' : data }
          PARENT_RTF_OBJS['Object_%s' % counter] = CHILD_OBJ
