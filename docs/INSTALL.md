@@ -77,7 +77,7 @@ Install the following Python modules using `pip`.
 
 ```
 sudo easy_install -U setuptools
-sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests git+https://github.com/aaronst/macholibre.git
+sudo pip install czipfile pefile hachoir-parser hachoir-core hachoir-regex hachoir-metadata hachoir-subfile ConcurrentLogHandler pypdf2 xmltodict rarfile ssdeep pylzma oletools pyasn1_modules pyasn1 pyelftools javatools requests 
 ```
 NOTE: Ensure pefile is at least version pefile-1.2.10-139. On some distros a latter version is installed which means you will need to build from source. To do this, simply follow the instructions below...
 
@@ -87,6 +87,15 @@ tar -xvzf pefile-2016.3.28.tar.gz
 cd pefile-2016.3.28
 python setup.py build
 sudo python setup.py install
+```
+
+Install macholibre for python2.
+```
+git clone https://github.com/aaronst/macholibre.git
+git checkout python2 
+cd macholibre
+python setup.py build
+python setup.py install
 ```
 
 Install FSF
